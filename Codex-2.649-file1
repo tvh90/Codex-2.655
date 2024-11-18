@@ -40,7 +40,7 @@ _G.MainSettings = {
             [11] = "Buddha-Buddha",
             [12] = "Control-Control",
             [13] = "Gravity-Gravity",
-            [14] = "Rumble-Rumble",
+            [14] = "Rumble-Rumble"
         }
     }
 _G.Fruits_Settings = { -- ตั้งค่าผล

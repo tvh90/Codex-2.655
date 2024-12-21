@@ -1,0 +1,26 @@
+_G.Settings = {
+    ["AfkCheckTime"] = 300, -- Seconds
+    ["EquipRod"] = "Auto", -- Trident Rod, Destiny Rod,... Rod
+    ["SellFish"] = {
+        ["SellDelay"] = 100, -- Seconds
+        ["Enable"] = true,
+        ["Method"] = {
+            ["Event"] = true,
+            ["Enchant"] = true,
+            ["Mythical"] = true,
+            ["Legendary"] = true,
+            ["Exotic"] = true
+        }
+    },
+    ['Rod'] = {
+        ['Trident Rod'] = true,
+        ['Destiny Rod'] = true
+    },
+    ['MethodShake'] = "Fast", -- Fast, Fix bug
+    ["FpsBoost"] = false,
+    ["Black_Screen"] = true
+}
+getgenv().Key = "MARU-E3NG-HEA2R-ADPM-BFY0G-3DP7"
+getgenv().id = "1093871052112789586"
+getgenv().Script_Mode = "Kaitun_Script"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()

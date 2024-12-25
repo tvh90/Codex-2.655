@@ -1,272 +1,102 @@
-getgenv().team = "Marines" -- Pirates
-
-repeat wait() until game:IsLoaded() and game.Players.LocalPlayer:FindFirstChild("DataLoaded")
-local plr = game.Players.LocalPlayer
-if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Main (minimal)") then
-    repeat
-        wait()
-        local l_Remotes_0 = game.ReplicatedStorage:WaitForChild("Remotes");
-        l_Remotes_0.CommF_:InvokeServer("SetTeam", getgenv().team);
-        task.wait(3)
-    until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Main (minimal)")
-end
-local VirtualUser = game:service "VirtualUser"
-game:service("Players").LocalPlayer.Idled:connect(
-    function()
-        VirtualUser:CaptureController()
-        VirtualUser:ClickButton2(Vector2.new())
-    end
-)
-
-local plr = game.Players.LocalPlayer
-if getgenv().noclipsetup ~= true then
-    spawn(function()
-        game:GetService("RunService").Stepped:Connect(function()
-            if getgenv().noclip then
-                for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                    if v:IsA("BasePart") then
-                        v.CanCollide = false
-                    end
-                end
-
-                if not plr.Character:FindFirstChild("Humanoid") or not plr.Character:FindFirstChild("HumanoidRootPart") or plr.Character.Humanoid.Health <= 0 then
-                    getgenv().noclip = false
-                end
-            end
-            if not game.Players.LocalPlayer.Character.Head:FindFirstChild("BodyVelocity") and getgenv().noclip then
-                local ag = Instance.new("BodyVelocity")
-                ag.Velocity = Vector3.new(0, 0, 0)
-                ag.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-                ag.P = 9000
-                ag.Parent = game.Players.LocalPlayer.Character.Head
-                for r, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                    if v:IsA("BasePart") then
-                        v.CanCollide = false
-                    end
-                end
-            elseif not getgenv().noclip and game.Players.LocalPlayer.Character.Head:FindFirstChild("BodyVelocity") then
-                game.Players.LocalPlayer.Character.Head:FindFirstChild("BodyVelocity"):Destroy()
-            end
-        end)
-    end)
-    getgenv().noclipsetup = true
-    print("Noclip Setuped!")
-end
-local lp = game.Players.LocalPlayer
-function CheckNearestTeleporter(vcs)
-    vcspos = vcs.Position
-    min = math.huge
-    min2 = math.huge
-    local placeId = game.PlaceId
-    if placeId == 2753915549 then
-        OldWorld = true
-    elseif placeId == 4442272183 then
-        NewWorld = true
-    elseif placeId == 7449423635 then
-        ThreeWorld = true
-    end
-    if ThreeWorld then
-        TableLocations = {
-            ["Caslte On The Sea"] = Vector3.new(-5058.77490234375, 314.5155029296875, -3155.88330078125),
-            ["Hydra"] = Vector3.new(5650.9482421875, 1017.2747802734375, -350.3790283203125),
-            ["Mansion"] = Vector3.new(-12463.8740234375, 374.9144592285156, -7523.77392578125),
-            ["Temple of Time"] = Vector3.new(28282.5703125, 14896.8505859375, 105.1042709350586)
-            --["Great Tree"] = Vector3.new(2968.699951171875, 2284.286865234375, -7226.28662109375),
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game.Players
+repeat task.wait() until game.Players.LocalPlayer
+repeat task.wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+_G.Team = "Pirate" -- Marine / Pirate
+getgenv().Script_Mode = "Kaitun_Script"
+_G.WebHook = {
+    ["Enabled"] = true, -- เปิดการใช้งาน
+    ["Url"] = "", -- ลิ้งค์เว็บฮุก
+    ["Delay"] = 60 -- วินาที
+}
+_G.MainSettings = {
+        ["EnabledHOP"] = true, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
+        ['FPSBOOST'] = true, -- ภาพกาก
+        ["FPSLOCKAMOUNT"] = 20, -- จำนวน FPS
+        ['WhiteScreen'] = true, -- จอขาว
+        ['CloseUI'] = true, -- ปิด Ui
+        ["NotifycationExPRemove"] = true, -- ลบ ExP ที่เด้งตอนฆ่ามอน
+        ['AFKCheck'] = 150, -- ถ้ายืนนิ่งเกินวิที่ตั้งมันจะรีเกม
+        ["LockFragments"] = 40000, -- ล็อคเงินม่วง
+        ["LockFruitsRaid"] = { -- ล็อคผลที่ไม่เอาไปลงดัน
+            [1] = "Dough-Dough",
+            [2] = "Dragon-Dragon"
         }
-    elseif NewWorld then
-        TableLocations = {
-            ["Mansion"] = Vector3.new(-288.46246337890625, 306.130615234375, 597.9988403320312),
-            ["Flamingo"] = Vector3.new(2284.912109375, 15.152046203613281, 905.48291015625),
-            ["122"] = Vector3.new(923.21252441406, 126.9760055542, 32852.83203125),
-            ["3032"] = Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422)
-        }
-    elseif OldWorld then
-        TableLocations = {
-            ["1"] = Vector3.new(-7894.6201171875, 5545.49169921875, -380.2467346191406),
-            ["2"] = Vector3.new(-4607.82275390625, 872.5422973632812, -1667.556884765625),
-            ["3"] = Vector3.new(61163.8515625, 11.759522438049316, 1819.7841796875),
-            ["4"] = Vector3.new(3876.280517578125, 35.10614013671875, -1939.3201904296875)
-        }
-    end
-    TableLocations2 = {}
-    for i, v in pairs(TableLocations) do
-        TableLocations2[i] = (v - vcspos).Magnitude
-    end
-    for i, v in pairs(TableLocations2) do
-        if v < min then
-            min = v
-            min2 = v
-        end
-    end
-    for i, v in pairs(TableLocations2) do
-        if v < min then
-            min = v
-            min2 = v
-        end
-    end
-    for i, v in pairs(TableLocations2) do
-        if v <= min then
-            choose = TableLocations[i]
-        end
-    end
-    min3 = (vcspos - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    if min2 <= min3 then
-        return choose
-    end
-    return false
-end
-
-function requestEntrance(vector3)
-    local args = {
-        [1] = "requestEntrance",
-        [2] = vector3
     }
-    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-end
-
-function haveinbag(name)
-    for i, v in pairs(game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("getInventory")) do
-        if v.Type == "Blox Fruit" and v.Name == name then
-            return true
-        end
-    end
-end
-
-local function autostore()
-    for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-        if string.find(v.Name, "Fruit") and not haveinbag(v:GetAttribute("OriginalName")) then
-            print(v:GetAttribute("OriginalName"))
-
-
-            local args = {
-                [1] = "StoreFruit",
-                [2] = v:GetAttribute("OriginalName"),
-                [3] = game.Players.LocalPlayer.Character[v.Name]
-            }
-
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-        end
-    end
-end
-function Tweento(targetCFrame)
-    getgenv().noclip = true
-    if
-        game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character and
-        game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") and
-        game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and
-        game:GetService("Players").LocalPlayer.Character.Humanoid.Health > 0 and
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-    then
-        if TweenSpeed == nil then
-            TweenSpeed = 200
-        end
-        if game.Players.LocalPlayer.Character.Humanoid.Sit then
-            game.Players.LocalPlayer.Character.Humanoid.Sit = false
-        end
-        local targetPos = targetCFrame.Position
-        Distance =
-            (targetPos - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)
-            .Magnitude
-        if Distance < 600 then
-            Speed = TweenSpeed
-        elseif Distance >= 600 then
-            Speed = TweenSpeed
-        end
-
-        local tweenfunc = {}
-        local tween_s = game:service "TweenService"
-        local info =
-            TweenInfo.new(
-                (targetPos - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)
-                .Magnitude /
-                250,
-                Enum.EasingStyle.Linear
-            )
-        local tween =
-            tween_s:Create(
-                game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"],
-                info,
-                { CFrame = targetCFrame }
-            )
-        tween:Play()
-        getgenv().noclip = true
-        function tweenfunc:Stop()
-            tween:Cancel()
-        end
-
-        tween.Completed:Wait()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
-            CFrame.new(
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y,
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z
-            )
-        getgenv().noclip = false
-    end
-    if not tween then
-        return tween
-    end
-    return tweenfunc
-end
-
-local function GetCountDownTime()
-    local oldpos = plr.Character.HumanoidRootPart.CFrame.Position
-
-    if not workspace:FindFirstChild("Countdown") then
-        Tweento(CFrame.new(-1093.905029296875, 137.4580078125, -14520.4658203125))
-        if workspace:FindFirstChild("Countdown") then
-            --Tweento(CFrame.new(oldpos))
-        end
-    end
-    repeat wait() until workspace:FindFirstChild("Countdown")
-
-    if workspace.Countdown.SurfaceGui.TextLabel.Text:find("START") then return 0 end
-    return tonumber(workspace.Countdown.SurfaceGui.TextLabel.Text:split(":")[2])
-end
-local function getGift()
-    if not workspace._WorldOrigin:FindFirstChild("Present") then return end
-    for i, v in pairs(workspace._WorldOrigin:GetChildren()) do
-        if v.Name == "Present" and v:FindFirstChild("Box") and v.Box:FindFirstChild("ProximityPrompt") then
-            return v
-        end
-    end
-end
-local function AutoCollectGift()
-    local CountD = GetCountDownTime()
-    local gif
-    if CountD <= 2 then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.PresentPad.CFrame
-        local CountedGift = 0
-        repeat
-            task.wait()
-            if (workspace.PresentPad.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 200 then
-                Tweento(workspace.PresentPad.CFrame)
-            end
-            gif = getGift()
-            if gif then
-                plr.Character.HumanoidRootPart.CFrame = getGift().Box.CFrame
-                if (gif.Box.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 10 then
-                    fireproximityprompt(gif.Box.ProximityPrompt)
-                    CountedGift = CountedGift + 1
-                end
-            end
-        until GetCountDownTime() > 2 or CountedGift >= 1
-    end
-end
-
-
-while wait() do
-    AutoCollectGift()
-    for i, v in game:GetService("Players").LocalPlayer.Backpack:GetChildren() do
-        if string.find(v.Name, "Gift") then
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-
-            task.wait(1)
-            if game:GetService("Players").LocalPlayer.Character:FindFirstChild(v.Name) then
-                game:GetService("Players").LocalPlayer.Character:FindFirstChild(v.Name).ConsumeEvent
-                    :InvokeServer()
-            end
-        end
-    end
-    autostore()
-end
+_G.Fruits_Settings = { -- ตั้งค่าผล
+    ['Main_Fruits'] = {'Dough-Dough'}, -- ผลหลัก ถ้ายังไม่ใช่ค่าที่ตั้งมันจะกินจนกว่าจะใช่หรือซื้อ
+    ['Select_Fruits'] = {"Flame-Flame", "Ice-Ice", "Quake-Quake", "Light-Light", "Dark-Dark", "Spider-Spider", "Rumble-Rumble", "Magma-Magma", "Buddha-Buddha"} -- กินหรือซื้อตอนไม่มีผล
+}
+_G.Quests_Settings = { -- ตั้งค่าเควสหลักๆ
+    ['Rainbow_Haki'] = true,
+    ["MusketeerHat"] = true,
+    ["PullLever"] = true,
+    ['DoughQuests_Mirror'] = {
+        ['Enabled'] = true,
+        ['UseFruits'] = true
+    }        
+}
+_G.Races_Settings = { -- ตั้งค่าเผ่า
+    ['Race'] = {
+        ['EnabledEvo'] = true,
+        ["v2"] = true,
+        ["v3"] = true,
+        ["Races_Lock"] = {
+            ["Races"] = { -- Select Races U want
+                ["Mink"] = true,
+                ["Human"] = true,
+                ["Fishman"] = true
+            },
+            ["RerollsWhenFragments"] = 40000 -- Random Races When Your Fragments is >= Settings
+        }
+    }
+}
+_G.Settings_Melee = { -- หมัดที่จะทำ
+    ['Superhuman'] = true,
+    ['DeathStep'] = true,
+    ['SharkmanKarate'] = true,
+    ['ElectricClaw'] = true,
+    ['DragonTalon'] = true,
+    ['Godhuman'] = true
+}
+_G.FarmMastery_Settings = {
+    ['Melee'] = true,
+    ['Sword'] = true,
+    ['DevilFruits'] = true,
+    ['Select_Swords'] = {
+        ["AutoSettings"] = true, -- ถ้าเปิดอันนี้มันจะเลือกดาบให้เองหรือฟาร์มทุกดาบนั่นเอง
+        ["ManualSettings"] = { -- ถ้าปรับ AutoSettings เป็น false มันจะฟาร์มดาบที่เลือกตรงนี้ ตัวอย่างข้างล่าง
+            "Saber",
+            "Buddy Sword"
+        }
+    }
+}
+_G.SwordSettings = { -- ดาบที่จะทำ
+    ['Saber'] = true,
+    ["Pole"] = true,
+    ['MidnightBlade'] = true,
+    ['Shisui'] = true,
+    ['Saddi'] = true,
+    ['Wando'] = true,
+    ['Yama'] = true,
+    ['Rengoku'] = true,
+    ['Canvander'] = true,
+    ['BuddySword'] = true,
+    ['TwinHooks'] = true,
+    ['HallowScryte'] = true,
+    ['TrueTripleKatana'] = true,
+    ['CursedDualKatana'] = true
+}
+_G.SharkAnchor_Settings = {
+    ["Enabled_Farm"] = true,
+    ['FarmAfterMoney'] = 2500000
+}
+_G.GunSettings = { -- ปืนที่จะทำ
+    ['Kabucha'] = true,
+    ['SerpentBow'] = true,
+    ['SoulGuitar'] = true
+}
+getgenv().Key = "MARU-R7TC-V0FNL-GULA-2D76J-GNL5"
+getgenv().id = "1093871052112789586"
+getgenv().Script_Mode = "Kaitun_Script"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()

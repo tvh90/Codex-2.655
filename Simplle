@@ -23,8 +23,8 @@ getgenv().simple_settings = {
 
     ["FRUITPURCHASE"] = true, -- Automatically purchase fruits based on priority list
     ["PRIORITYFRUIT"] = { -- List of preferred fruits to purchase or eat in order of priority
-        [1] = "Dragon-Dragon",
-        [2] = "Flame-Flame",
+        [1] = "Dough-Dough",
+        [2] = "Dragon-Dragon",
         [3] = "Rumble-Rumble",
         [4] = "Human-Human: Buddha",
         [5] = "Dark-Dark",

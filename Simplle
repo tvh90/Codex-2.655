@@ -33,6 +33,10 @@ getgenv().simple_settings = {
     ["PRIORITYFRUIT"] = { -- List of preferred fruits to purchase or eat in order of priority
         [1] = "Dragon-Dragon",
         [1] = "Dough-Dough",
+        [2] = "Flame-Flame",
+        [3] = "Rumble-Rumble",
+        [4] = "Human-Human: Buddha",
+        [5] = "Dark-Dark",
     },
 
     ["FPSCAP"] = 30, -- Limit the frame rate to optimize performance

@@ -33,9 +33,9 @@ getgenv().simple_settings = {
     ["PRIORITYFRUIT"] = { -- List of preferred fruits to purchase or eat in order of priority
         [1] = "Dragon-Dragon",
         [1] = "Dough-Dough",
-        [2] = "Flame-Flame",
+        [2] = "Human-Human: Buddha",
         [3] = "Rumble-Rumble",
-        [4] = "Human-Human: Buddha",
+        [4] = "Flame-Flame",
         [5] = "Dark-Dark",
     },
 

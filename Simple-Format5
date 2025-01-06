@@ -15,9 +15,10 @@ _G.MainSettings = {
         ['AFKCheck'] = 150, -- ถ้ายืนนิ่งเกินวิที่ตั้งมันจะรีเกม
         ["LockFragments"] = 20000, -- ล็อคเงินม่วง
         ["LockFruitsRaid"] = { -- ล็อคผลที่ไม่เอาไปลงดัน
+            [1] = "Dragon-Dragon" 
             [1] = "Dough-Dough",
             [1] = "Kitsune-Kitsune",
-            [2] = "Dragon-Dragon"
+            [1] = "Yeti-Yeti"     
         }
     }
 _G.Fruits_Settings = { -- ตั้งค่าผล

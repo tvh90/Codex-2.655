@@ -18,7 +18,18 @@ _G.MainSettings = {
            [1] = "Dough-Dough",
            [1] = "Dragon-Dragon",
            [1] = "Kitsune-Kitsune",
-           [1] = "Yeti-Yeti"
+           [1] = "Yeti-Yeti",
+           [2] = "Leopard-Leopard",
+           [3] = "T-rex-T-rex",
+           [4] = "Mammoth-Mammoth",
+           [5] = "Venom-Venom",
+           [6] = "Spirit-Spirit",
+           [7] = "Shadow-Shadow",
+           [8] = "Portal-Portal",
+           [9] = "Buddha-Buddha",
+           [10] = "Control-Control",
+           [11] = "Gravity-Gravity",
+           [12] = "Rumble-Rumble"
         }
     }
 _G.Fruits_Settings = { -- ตั้งค่าผล

@@ -18,7 +18,7 @@ _G.MainSettings = {
             [1] = "Dough-Dough",
             [1] = "Yeti-Yeti",
             [1] = "Kitsune-Kitsune",
-            [2] = "Dragon-Dragon"
+            [1] = "Dragon-Dragon"
         }
     }
 _G.Fruits_Settings = { -- ตั้งค่าผล

@@ -16,9 +16,10 @@ _G.MainSettings = {
         ["LockFragments"] = 20000, -- ล็อคเงินม่วง
         ["LockFruitsRaid"] = { -- ล็อคผลที่ไม่เอาไปลงดัน
             [1] = "Dough-Dough",
-            [1] = "Kitsune-Kitsune",
-            [1] = "Yeti-Yeti",
-            [1] = "Dragon-Dragon"
+            [2] = "Kitsune-Kitsune",
+            [3] = "Yeti-Yeti",
+            [4] = "Dragon (East)-Dragon (East)",
+            [5] = "Dragon (West)-Dragon (West)" 
         }
     }
 _G.Fruits_Settings = { -- ตั้งค่าผล

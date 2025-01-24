@@ -5,8 +5,8 @@ getgenv().Configs = {
     ["Team"] = "Marines",
     ["Gun Farm"] = false, -- Fast farm level, but farming melee is slow
     ["FPS Boost"] = {
-        ["Enable"] = false,
-        ["FPS Cap"] = 30,
+        ["Enable"] = true,
+        ["FPS Cap"] = 15,
     },
     ["Farm Boss Drops"] = {
         ["Enable"] = false,

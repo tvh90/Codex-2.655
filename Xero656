@@ -4,8 +4,8 @@ getgenv().Shutdown = false -- Turn on if u are farming bulk accounts
 getgenv().Configs = {
     ["Team"] = "Marines",
     ["FPS Boost"] = {
-        ["Enable"] = false,
-        ["FPS Cap"] = 30,
+        ["Enable"] = true,
+        ["FPS Cap"] = 15,
     },
     ["Farm Boss Drops"] = {
         ["Enable"] = false,

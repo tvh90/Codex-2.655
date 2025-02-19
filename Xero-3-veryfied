@@ -5,7 +5,7 @@ getgenv().Configs = {
     ["Team"] = "Marines",
     ["FPS Boost"] = {
         ["Enable"] = true,
-        ["FPS Cap"] = 15,
+        ["FPS Cap"] = 30,
     },
     ["Farm Boss Drops"] = {
         ["Enable"] = false,
@@ -16,6 +16,9 @@ getgenv().Configs = {
         ["Hop Find Tushita"] = true,
         ["Hop Find Valkyrie Helm"] = true,
         ["Hop Find Mirror Fractal"] = true,
+        ["Hop Find Darkbeard"] = true, -- For skull guitar
+        ["Hop Find Soul Reaper"] = true, -- For CDK
+        ["Hop Find Mirage"] = true, -- For pull lever
         ["Find Fruit"] = true, -- Will find 1m+ fruit to unlock swan door to access third sea
     },
     ["Farm Mastery"] = {
@@ -29,6 +32,11 @@ getgenv().Configs = {
         ["First Farm At Sky"] = true,
         ["Farm Bone Get x2 Exp"] = true
     },
+    ["Trackstat"] = {
+        ["Enable"] = false,
+        ["Key"] = "", -- Get from xerohub.click
+        ["Device"] = "test" -- u can put any name here
+    },
     ["Auto Spawn rip_indra"] = true,
     ["Auto Spawn Dough King"] = true,
     ["Auto Pull Lever"] = true,
@@ -40,9 +48,9 @@ getgenv().Configs = {
     ["Skull Guitar"] = true,
     ["Cursed Dual Katana"] = true,
     ["Switch Melee"] = true,
-    ["Eat Fruit"] = "Yeti-Yeti","Kitsune-Kitsune","Dough-Dough", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
-    ["Snipe Fruit"] = "Buddha-Buddha", "Flame-Flame", "Rumble-Rumble", "Magma-Magma", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
-    ["Lock Fragment"] = 25000,
+    ["Eat Fruit"] = "Dough Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
+    ["Snipe Fruit"] = "Buddha Fruit, Flame Fruit, Ice Fruit, Quake Fruit, Dark, Magma Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
+    ["Lock Fragment"] = 30000,
     ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
 }
 repeat task.wait() pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute

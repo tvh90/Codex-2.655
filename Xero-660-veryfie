@@ -1,5 +1,5 @@
 -- Max level, godhuman, cdk, sgt
-script_key = "SOE3HMUGXW7OVJNQ43EPZM5HXGYA" -- premium only, u can leave it blank if ur not
+script_key = "SOE3HMUGXW7OVJNQ43EPZM5HXGYA -- premium only, u can leave it blank if ur not
 getgenv().Shutdown = false -- Turn on if u are farming bulk accounts
 getgenv().Configs = {
     ["Team"] = "Marines",
@@ -49,7 +49,7 @@ getgenv().Configs = {
     ["Cursed Dual Katana"] = true,
     ["Switch Melee"] = true,
     ["Eat Fruit"] = "Dough Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
-    ["Snipe Fruit"] = "Buddha Fruit, Control Fruit, Gas Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
+    ["Snipe Fruit"] = "Buddha Fruit", "Control Fruit", "Gas Fruit", "Magma Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
     ["Lock Fragment"] = 30000,
     ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
 }

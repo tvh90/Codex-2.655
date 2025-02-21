@@ -1,48 +1,101 @@
--- Max level, godhuman, cdk, sgt
-script_key = "XKH3LMMCTGWJVP54432PZM5HXGYA" -- premium only, u can leave it blank if ur not
-getgenv().Shutdown = false -- Turn on if u are farming bulk accounts
-getgenv().Configs = {
-    ["Team"] = "Marines",
-    ["FPS Boost"] = {
-        ["Enable"] = true,
-        ["FPS Cap"] = 15,
-    },
-    ["Farm Boss Drops"] = {
-        ["Enable"] = false,
-        ["When x2 Exp Expired"] = false
-    },
-    ["Hop"] = { -- premium only
-        ["Enable"] = true,
-        ["Hop Find Tushita"] = true,
-        ["Hop Find Valkyrie Helm"] = true,
-        ["Hop Find Mirror Fractal"] = true,
-        ["Find Fruit"] = true, -- Will find 1m+ fruit to unlock swan door to access third sea
-    },
-    ["Farm Mastery"] = {
-        ["Enable"] = true,
-        ["Farm Mastery Weapons"] = {"Sword", "Gun", "Blox Fruit"}, -- Blox Fruit, Gun (left -> right: High -> Low Priority)
-        ["Swords To Farm"] = {"Cursed Dual Katana"},
-        ["Guns To Farm"] = {"Skull Guitar"},
-        ["Mastery Health (%)"] = 40 -- For Blox Fruit, Gun
-    },
-    ["Farm Config"] = {
-        ["First Farm At Sky"] = true,
-        ["Farm Bone Get x2 Exp"] = true
-    },
-    ["Auto Spawn rip_indra"] = true,
-    ["Auto Spawn Dough King"] = true,
-    ["Auto Pull Lever"] = true,
-    ["Auto Collect Berry"] = true,
-    ["Auto Evo Race"] = true,
-    ["Awaken Fruit"] = true,
-    ["Rainbow Haki"] = true,
-    ["Hop Player Near"] = true,
-    ["Skull Guitar"] = true,
-    ["Cursed Dual Katana"] = true,
-    ["Switch Melee"] = true,
-    ["Eat Fruit"] = "Dough Fruit",-- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
-    ["Snipe Fruit"] = "Magma Fruit",-- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
-    ["Lock Fragment"] = 25000,
-    ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game.Players
+repeat task.wait() until game.Players.LocalPlayer
+repeat task.wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+_G.Team = "Pirate" -- Marine / Pirate
+getgenv().Script_Mode = "Kaitun_Script"
+_G.MainSettings = {
+        ["EnabledHOP"] = true, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
+        ["UseGun"] = false,
+        ['FPSBOOST'] = true, -- ภาพกาก
+        ["FPSLOCKAMOUNT"] = 15, -- จำนวน FPS
+        ['WhiteScreen'] = true, -- จอขาว
+        ['CloseUI'] = true, -- ปิด Ui
+        ["NotifycationExPRemove"] = true, -- ลบ ExP ที่เด้งตอนฆ่ามอน
+        ['AFKCheck'] = 150, -- ถ้ายืนนิ่งเกินวิที่ตั้งมันจะรีเกม
+        ["LockFragments"] = 20000, -- ล็อคเงินม่วง
+        ["LockFruitsRaid"] = { -- ล็อคผลที่ไม่เอาไปลงดัน
+            [1] = "Dough-Dough",
+            [2] = "Kitsune-Kitsune",
+            [3] = "Yeti-Yeti",
+            [4] = "Dragon (East)-Dragon (East)",
+            [5] = "Dragon (West)-Dragon (West)" 
+        }
+    }
+_G.Fruits_Settings = { -- ตั้งค่าผล
+    ['Main_Fruits'] = {'Dough-Dough'}, -- ผลหลัก ถ้ายังไม่ใช่ค่าที่ตั้งมันจะกินจนกว่าจะใช่หรือซื้อ
+    ['Select_Fruits'] = {"Magma-Magma", "Buddha-Buddha", "Flame-Flame", "Rumble-Rumble", "Ice-Ice", "Quake-Quake", "Light-Light", "Dark-Dark", "Spider-Spider"} -- กินหรือซื้อตอนไม่มีผล
 }
-repeat task.wait() pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
+_G.Quests_Settings = { -- ตั้งค่าเควสหลักๆ
+    ['Rainbow_Haki'] = true,
+    ["MusketeerHat"] = true,
+    ["PullLever"] = true,
+    ['DoughQuests_Mirror'] = {
+        ['Enabled'] = true,
+        ['UseFruits'] = true
+    }        
+}
+_G.Races_Settings = { -- ตั้งค่าเผ่า
+    ['Race'] = {
+        ['EnabledEvo'] = true,
+        ["v2"] = true,
+        ["v3"] = true,
+        ["Races_Lock"] = {
+            ["Races"] = { -- Select Races U want
+                ["Mink"] = true,
+                ["Human"] = true,
+                ["Fishman"] = true
+            },
+            ["RerollsWhenFragments"] = 20000 -- Random Races When Your Fragments is >= Settings
+        }
+    }
+}
+_G.Settings_Melee = { -- หมัดที่จะทำ
+    ['Superhuman'] = true,
+    ['DeathStep'] = true,
+    ['SharkmanKarate'] = true,
+    ['ElectricClaw'] = true,
+    ['DragonTalon'] = true,
+    ['Godhuman'] = true
+}
+_G.FarmMastery_Settings = {
+    ['Melee'] = true,
+    ['Sword'] = true,
+    ['DevilFruits'] = true,
+    ['Select_Swords'] = {
+        ["AutoSettings"] = true, -- ถ้าเปิดอันนี้มันจะเลือกดาบให้เองหรือฟาร์มทุกดาบนั่นเอง
+        ["ManualSettings"] = { -- ถ้าปรับ AutoSettings เป็น false มันจะฟาร์มดาบที่เลือกตรงนี้ ตัวอย่างข้างล่าง
+            "Saber",
+            "Buddy Sword"
+        }
+    }
+}
+_G.SwordSettings = { -- ดาบที่จะทำ
+    ['Saber'] = true,
+    ["Pole"] = true,
+    ['MidnightBlade'] = true,
+    ['Shisui'] = true,
+    ['Saddi'] = true,
+    ['Wando'] = true,
+    ['Yama'] = true,
+    ['Rengoku'] = true,
+    ['Canvander'] = true,
+    ['BuddySword'] = true,
+    ['TwinHooks'] = true,
+    ['HallowScryte'] = true,
+    ['TrueTripleKatana'] = true,
+    ['CursedDualKatana'] = true
+}
+_G.SharkAnchor_Settings = {
+    ["Enabled_Farm"] = true,
+    ['FarmAfterMoney'] = 2500000
+}
+_G.GunSettings = { -- ปืนที่จะทำ
+    ['Kabucha'] = true,
+    ['SerpentBow'] = true,
+    ['SoulGuitar'] = true
+}
+getgenv().Key = "MARU-AT5D-ILQ91-FT9K-1YPE4-0AKU"
+getgenv().id = "1093871052112789586"
+getgenv().Script_Mode = "Kaitun_Script"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()

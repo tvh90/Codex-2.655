@@ -8,7 +8,7 @@ _G.MainSettings = {
         ["EnabledHOP"] = true, -- เปิด HOP ( มันไม่มีอยู่ละใส่มาเท่ๆ )
         ["UseGun"] = false,
         ['FPSBOOST'] = true, -- ภาพกาก
-        ["FPSLOCKAMOUNT"] = 15, -- จำนวน FPS
+        ["FPSLOCKAMOUNT"] = 20, -- จำนวน FPS
         ['WhiteScreen'] = true, -- จอขาว
         ['CloseUI'] = true, -- ปิด Ui
         ["NotifycationExPRemove"] = true, -- ลบ ExP ที่เด้งตอนฆ่ามอน
@@ -19,7 +19,7 @@ _G.MainSettings = {
             [2] = "Kitsune-Kitsune",
             [3] = "Yeti-Yeti",
             [4] = "Dragon (East)-Dragon (East)",
-            [5] = "Dragon (West)-Dragon (West)" 
+            [5] = "Dragon (West)-Dragon (West)"
         }
     }
 _G.Fruits_Settings = { -- ตั้งค่าผล

@@ -117,8 +117,10 @@ getgenv().Config = {
 		}
 	},
 	["Performance"] = {
+		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = true
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true,

@@ -57,9 +57,9 @@ getgenv().Key = "d70f3af5db00b22eaf8c7977"
         },
         ["Sniper Fruit Shop"] = {
             ["Enabled"] = true, -- Auto Buy Fruit in Shop Mirage and Normal
-            ["Fruit"] = {"Leopard-Leopard","Kitsune-Kitsune","Dragon-Dragon","Yeti-Yeti","Gas-Gas"},
+            ["Fruit"] = {"Dough-Dough"},
         },
-        ["Lock Fruit"] = {},
+        ["Lock Fruit"] = {"Dough-Dough","Leopard-Leopard","Kitsune-Kitsune","Dragon-Dragon","Yeti-Yeti","Gas-Gas"},
         ["Webhook"] = {
             ["Enabled"] = false,
             ["WebhookUrl"] = "",

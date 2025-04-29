@@ -1,2 +1,287 @@
 getgenv().Key = "k9a5c0632485cb0535227b74"
+getgenv().Config = {
+	["Potions"] = {
+		["Use Potions"] = {
+			["Enable"] = true,
+			["Potions"] = {
+				["Coins II"] = true,
+				["Speed Evolved"] = true,
+				["Coins IV"] = true,
+				["Lucky IV"] = true,
+				["Lucky III"] = true,
+				["Mythic Evolved"] = true,
+				["Coins V"] = false,
+				["Coins I"] = true,
+				["Mythic II"] = true,
+				["Coins Evolved"] = false,
+				["Mythic III"] = true,
+				["Mythic IV"] = true,
+				["Mythic V"] = true,
+				["Speed IV"] = true,
+				["Mythic I"] = true,
+				["Coins III"] = true,
+				["Lucky II"] = true,
+				["Speed I"] = true,
+				["Speed II"] = true,
+				["Infinity Elixir"] = true,
+				["Lucky Evolved"] = true,
+				["Speed III"] = true,
+				["Lucky I"] = true,
+				["Speed V"] = true,
+				["Lucky V"] = true
+			}
+		},
+		["Craft Potions"] = {
+			["Enable"] = true,
+			["Potions"] = {
+				["Coins II"] = true,
+				["Coins IV"] = true,
+				["Mythic IV"] = true,
+				["Speed II"] = true,
+				["Speed IV"] = true,
+				["Coins I"] = true,
+				["Lucky IV"] = true,
+				["Coins III"] = true,
+				["Speed I"] = true,
+				["Lucky II"] = true,
+				["Lucky III"] = true,
+				["Mythic I"] = true,
+				["Speed III"] = true,
+				["Lucky I"] = true,
+				["Mythic II"] = true,
+				["Mythic III"] = true
+			}
+		}
+	},
+	["Hatcher"] = {
+		["Egg"] = "Iceshard Egg",
+		["Hatch Location"] = "Island",
+		["Auto Hatch"] = true
+	},
+	["Webhook"] = {
+		["Egg Hatched"] = {
+			["Enable"] = true,
+			["Rarity"] = {
+				["Unique"] = true,
+				["Common"] = true,
+				["Epic"] = true,
+				["Secret"] = true,
+				["Legendary"] = true,
+				["Rare"] = true
+			},
+			["Chance"] = 0
+		},
+		["Mention"] = "1093871052112789586",
+		["URL"] = "https://discord.com/api/webhooks/1366575075104522330/hcKaIKfbDKUn6uzk_fsiy1rj5z7MZH6bIteAWvJRENhLW8pRZXSminCCDxJHw9nKB-ZK"
+	},
+	["Upgrade"] = {
+		["Auto Flavor"] = true,
+		["Auto Gum"] = true,
+		["Auto Mastery"] = true
+	},
+	["Completitive"] = {
+		["Hatch Pet Task Option"] = "Hatch Infinity Egg (to complete the Task)",
+		["Auto Task"] = true
+	},
+	["Rift Island"] = {
+		["Rift Hatcher"] = {
+			["Egg"] = {
+				["Crystal Egg"] = true,
+				["100M Egg"] = true,
+				["Bunny Egg"] = true,
+				["Rainbow Egg"] = true,
+				["Magma Egg"] = true,
+				["Pastel Egg"] = true,
+				["Hell Egg"] = true,
+				["Spikey Egg"] = true,
+				["Lunar Egg"] = true,
+				["Nightmare Egg"] = true,
+				["Void Egg"] = true,
+				["Throwback Egg"] = true
+			},
+			["Auto Hatch Rift"] = true,
+			["Luck Multiplier"] = 0
+		},
+		["Auto Hatch Aura"] = true,
+		["Use Potions"] = {
+			["Potions"] = {
+				["Coins II"] = true,
+				["Speed Evolved"] = true,
+				["Coins IV"] = true,
+				["Lucky IV"] = true,
+				["Lucky III"] = true,
+				["Mythic Evolved"] = true,
+				["Coins V"] = true,
+				["Coins I"] = true,
+				["Mythic II"] = true,
+				["Coins Evolved"] = true,
+				["Mythic III"] = true,
+				["Mythic IV"] = true,
+				["Mythic V"] = true,
+				["Speed IV"] = true,
+				["Mythic I"] = true,
+				["Coins III"] = true,
+				["Lucky II"] = true,
+				["Speed I"] = true,
+				["Speed II"] = true,
+				["Infinity Elixir"] = true,
+				["Lucky Evolved"] = true,
+				["Speed III"] = true,
+				["Lucky I"] = true,
+				["Speed V"] = true,
+				["Lucky V"] = true
+			},
+			["Luck Multiplier"] = 0,
+			["Enable"] = true
+		}
+	},
+	["Event Hatcher"] = {
+		["Egg"] = "Throwback Egg",
+		["Auto Hatch Event"] = true
+	},
+	["Islands"] = {
+		["Island Hop"] = {
+			["Start Coin"] = 0,
+			["End Coin"] = 0,
+			["Enable"] = true,
+			["Cooldown"] = 7,
+			["Islands"] = {
+				["Twilight"] = false,
+				["Outer Space"] = false,
+				["Zen"] = false,
+				["Floating Island"] = false,
+				["The Void"] = false
+			}
+		},
+		["Unlock Islands"] = true
+	},
+	["Chest"] = {
+		["Required Open Chest"] = 10,
+		["Auto Royal Chest"] = true,
+		["Auto Golden Chest"] = true
+	},
+	["Shop"] = {
+		["Auto Alien Shop"] = {
+			["Enable"] = true,
+			["Product"] = {
+				["Lucky III"] = true,
+				["Mystery Box"] = true,
+				["Speed III"] = true,
+				["Golden Key"] = true,
+				["Speed IV"] = true,
+				["Coins IV"] = true,
+				["Lucky IV"] = true,
+				["Coins III"] = true
+			}
+		},
+		["Auto Black Market"] = {
+			["Enable"] = true,
+			["Product"] = {
+				["Lucky V"] = true,
+				["Speed V"] = false,
+				["Mythic Evolved"] = true,
+				["Speed Evolved"] = true,
+				["Coins V"] = true,
+				["Lucky Evolved"] = true,
+				["Mythic V"] = true,
+				["Coins Evolved"] = true
+			}
+		}
+	},
+	["Claimer"] = {
+		["Auto Doggy Jump"] = true,
+		["Auto Index"] = true,
+		["Auto Playtime"] = true,
+		["Auto Season"] = true,
+		["Auto Chest"] = true,
+		["Auto Quest"] = true,
+		["Auto Wheel Spin"] = true
+	},
+	["Automation"] = {
+		["Auto Blow"] = true,
+		["Auto Pickup"] = true,
+		["Auto Gift"] = true,
+		["Auto Sell"] = false
+	},
+	["Performance"] = {
+		["Disable Hatch Animation"] = false,
+		["Boost FPS"] = true,
+		["Disable Popups"] = false,
+		["Black Screen"] = true
+	},
+	["Powerups"] = {
+		["Auto Box"] = {
+			["Enable"] = true,
+			["Box"] = {
+				["Golden Box"] = true,
+				["Mystery Box"] = true
+			}
+		},
+		["Auto Golden Orb"] = true
+	},
+	["Auto Enchant"] = {
+		["Slot 2"] = {
+			["Gleaming 1"] = true,
+			["Gleaming 2"] = true,
+			["Bubbler 1"] = true,
+			["Team Up 2"] = true,
+			["Team Up 5"] = true,
+			["Team Up 4"] = true,
+			["Looter 4"] = true,
+			["High Roller"] = true,
+			["Magnetism"] = true,
+			["Bubbler 2"] = true,
+			["Bubbler 3"] = true,
+			["Bubbler 5"] = true,
+			["Bubbler 4"] = true,
+			["Looter 3"] = true,
+			["Team Up 3"] = true,
+			["Gleaming 3"] = true,
+			["Looter 1"] = true,
+			["Looter 5"] = true,
+			["Looter 2"] = true,
+			["Infinity"] = true,
+			["Team Up 1"] = true
+		},
+		["Roll Cooldown"] = 0.2,
+		["Slot 1"] = {
+			["Gleaming 1"] = true,
+			["Gleaming 2"] = true,
+			["Bubbler 1"] = true,
+			["Team Up 2"] = true,
+			["Team Up 5"] = true,
+			["Team Up 4"] = true,
+			["Looter 4"] = true,
+			["High Roller"] = true,
+			["Magnetism"] = true,
+			["Bubbler 2"] = true,
+			["Bubbler 3"] = true,
+			["Bubbler 5"] = true,
+			["Bubbler 4"] = true,
+			["Looter 3"] = true,
+			["Team Up 3"] = true,
+			["Gleaming 3"] = true,
+			["Looter 1"] = true,
+			["Looter 5"] = true,
+			["Looter 2"] = true,
+			["Infinity"] = true,
+			["Team Up 1"] = true
+		}
+	},
+	["Inventory"] = {
+		["Auto Equip Best"] = true,
+		["Auto Delete"] = {
+			["Enable"] = false,
+			["Rarity"] = {
+				["Unique"] = true,
+				["Common"] = true,
+				["Epic"] = true,
+				["Secret"] = true,
+				["Legendary"] = true,
+				["Rare"] = true
+			},
+			["Chance"] = 0
+		}
+	}
+}
 repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(20)until Joebiden

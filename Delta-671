@@ -1,103 +1,56 @@
-repeat task.wait() until game:IsLoaded()
-repeat task.wait() until game.Players
-repeat task.wait() until game.Players.LocalPlayer
-repeat task.wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
-_G.Team = "Pirate" -- Marine / Pirate
-getgenv().Script_Mode = "Kaitun_Script"
-_G.MainSettings = {
-    ["EnabledHOP"] = true,
-    ['FPSBOOST'] = true,
-    ["FPSLOCKAMOUNT"] = 15,
-    ['WhiteScreen'] = true,
-    ['CloseUI'] = false,
-    ["NotifycationExPRemove"] = true,
-    ['AFKCheck'] = 150,
-    ["LockFragments"] = 20000,
-    ["LockFruitsRaid"] = {
-        [1] = "Dough-Dough",
-        [2] = "Kitsune-Kitsune",
-        [3] = "Yeti-Yeti",
-        [4] = "Dragon (East)-Dragon (East)",
-        [5] = "Dragon (West)-Dragon (West)",   
-    }
+-- Max level, godhuman, cdk, sgt
+script_key = "WWOOVF4VTWZK7BXI433O77X37XQPD57C6PF35KNXXI" -- premium only, u can leave it blank if ur not
+getgenv().Shutdown = false -- Turn on if u are farming bulk accounts
+getgenv().Configs = {
+    ["Team"] = "Marines",
+    ["FPS Boost"] = {
+        ["Enable"] = true,
+        ["FPS Cap"] = 15,
+    },
+    ["Farm Boss Drops"] = {
+        ["Enable"] = false,
+        ["When x2 Exp Expired"] = false
+    },
+    ["Hop"] = { -- premium only
+        ["Enable"] = true,
+        ["Hop Find Tushita"] = true,
+        ["Hop Find Valkyrie Helm"] = true,
+        ["Hop Find Mirror Fractal"] = true,
+        ["Hop Find Darkbeard"] = true, -- For skull guitar
+        ["Hop Find Soul Reaper"] = true, -- For CDK
+        ["Hop Find Mirage"] = true, -- For pull lever
+        ["Find Fruit"] = true, -- Will find 1m+ fruit to unlock swan door to access third sea
+    },
+    ["Farm Mastery"] = {
+        ["Enable"] = true,
+        ["Farm Mastery Weapons"] = {"Sword", "Gun", "Blox Fruit"}, -- Blox Fruit, Gun (left -> right: High -> Low Priority)
+        ["Swords To Farm"] = {"Cursed Dual Katana"},
+        ["Guns To Farm"] = {"Skull Guitar"},
+        ["Mastery Health (%)"] = 40 -- For Blox Fruit, Gun
+    },
+    ["Farm Config"] = {
+        ["First Farm At Sky"] = true,
+        ["Farm Bone Get x2 Exp"] = true
+    },
+    ["Trackstat"] = {
+        ["Enable"] = false,
+        ["Key"] = "", -- Get from xerohub.click
+        ["Device"] = "test" -- u can put any name here
+    },
+    ["Auto Spawn rip_indra"] = true,
+    ["Auto Spawn Dough King"] = true,
+    ["Auto Pull Lever"] = true,
+    ["Auto Collect Berry"] = true,
+    ["Auto Evo Race"] = true,
+    ["Awaken Fruit"] = true,
+    ["Rainbow Haki"] = true,
+    ["Hop Player Near"] = true,
+    ["Skull Guitar"] = true,
+    ["Cursed Dual Katana"] = true,
+    ["Switch Melee"] = true,
+    ["Eat Fruit"] = "Magma Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
+    ["Snipe Fruit"] = "Dough Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
+    ["Lock Fragment"] = 30000,
+    ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
 }
-_G.SharkAnchor_Settings = {
-    ["Enabled_Farm"] = true,
-    ['FarmAfterMoney'] = 2500000
-}
-_G.Quests_Settings = {        
-    ['Rainbow_Haki'] = true,
-    ["MusketeerHat"] = true,
-    ["PullLever"] = true,
-    ['DoughQuests_Mirror'] = {
-        ['Enabled'] = true,
-        ['UseFruits'] = true
-    }        
-}
-_G.Races_Settings = {
-    ['Race'] = {
-        ['EnabledEvo'] = true,
-        ["v2"] = true,
-        ["v3"] = true,
-        ["Races_Lock"] = {
-            ["Races"] = {
-                ["Mink"] = true,
-                ["Human"] = true,
-                ["Fishman"] = true
-            },
-            ["RerollsWhenFragments"] = 20000
-        }
-    }
-}
-_G.Fruits_Settings = {
-    ['Main_Fruits'] = {'Dough-Dough'},
-    ['Select_Fruits'] = {"Magma-Magma", "Buddha-Buddha", "Flame-Flame", "Rumble-Rumble", "Ice-Ice", "Quake-Quake", "Light-Light", "Dark-Dark", "Spider-Spider"}
-}
-_G.Settings_Melee = {
-    ['Superhuman'] = true,
-    ['DeathStep'] = true,
-    ['SharkmanKarate'] = true,
-    ['ElectricClaw'] = true,
-    ['DragonTalon'] = true,
-    ['Godhuman'] = true
-}
-_G.SwordSettings = {
-    ['Saber'] = true,
-    ["Pole"] = false,
-    ['MidnightBlade'] = false,
-    ['Shisui'] = true,
-    ['Saddi'] = true,
-    ['Wando'] = false,
-    ['Yama'] = true,
-    ['Rengoku'] = false,
-    ['Canvander'] = false,
-    ['BuddySword'] = false,
-    ['TwinHooks'] = false,
-    ['HallowScryte'] = false,
-    ['TrueTripleKatana'] = true,
-    ['CursedDualKatana'] = true
-}
-_G.GunSettings = {
-    ['Kabucha'] = false,
-    ['SerpentBow'] = false,
-    ['SoulGuitar'] = true
-}
-_G.FarmMastery_Settings = {
-    ['Melee'] = true,
-    ['Sword'] = true,
-    ['DevilFruits'] = true,
-    ['Select_Swords'] = {
-        ["AutoSettings"] = true,
-        ["ManualSettings"] = {
-            "Saber",
-            "Buddy Sword"
-        }
-    }
-}
-_G.Hop_Settings = {
-    ["Find Tushita"] = false
-}
-getgenv().Key = "MARU-741J-3ER4K-SIMK-0GX2E-85UJ"
-getgenv().id = "1093871052112789586"
-getgenv().Script_Mode = "Kaitun_Script"
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
+repeat task.wait() pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute

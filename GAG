@@ -1,63 +1,61 @@
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 getgenv().Script_Mode = "Kaitun_Script"
 _G.Settings = {
-    SelectSeeds = {
-        "Cherry Blossom",
-        "Coconut",
-        "Mint",
-        "Easter Egg",
-        "Lemon",
-        "Succulent",
-        "Raspberry",
-        "Passionfruit",
-        "Cranberry",
-        "Candy Blossom",
-        "Watermelon",
-        "Red Lollipop",
-        "Pineapple",
-        "Blood Banana",
-        "Peach",
-        "Candy Sunflower",
-        "Crimson Vine",
-        "Mushroom",
-        "Pear",
-        "Chocolate Carrot",
-        "Starfruit",
-        "Pumpkin",
-        "Pepper",
-        "Cacao",
-        "Glowshroom",
-        "Eggplant",
-        "Durian",
-        "Avocado",
-        "Venus Fly Trap",
-        "Lotus",
-        "Banana",
-        "Dragon Fruit",
-        "Cursed Fruit",
-        "Mango",
-        "Cactus",
-        "Papaya",
-        "Beanstalk",
-        "Grape",
+    SeedsSetting = {
         "Bamboo",
-        "Soul Fruit",
         "Carrot",
         "Orange Tulip",
+        "Watermelon",
+        "Pumpkin",
         "Daffodil",
-        "Celestiberry"
+        "Mushroom",
+        "Nightshade",
+        "Beanstalk",
     },
-    StartBuyEggWhen = 150000,
-    SelectEggs = {
-        "Legendary Egg",
-        "Mythical Egg",
-        "Bug Egg"
+    SprinklerSettings = {
+        StartBuyWhen = 10000000,
+        SelectSprinklers = {
+            "Basic Sprinkler",
+            "Advanced Sprinkler",
+            "Master Sprinkler",
+            "Godly Sprinkler"
+        }
+    },
+    EggSettings = {
+        StartBuyEggWhen = 150000,
+        SelectEggs = {
+            "Legendary Egg",
+            "Mythical Egg",
+            "Bug Egg"
+        },
     },
     SelectHoneyStocks = {
-        "Bee Egg"
+        "Hive Fruit",
+        "Nectarine",
+        "Flower Seed Pack"
+    },
+    DestroySettings = {
+        DestroyWhenMoney = 500000,
+        SelectTrees = {"Strawberry", "Blueberry", "Corn", "Tomato"}
+    },
+    Webhook = "",
+    PetSettings = {
+        Sell = {
+            "Commom Egg",
+            "Uncommon Egg"
+        },
+        UpgradeSlots = {
+            "Commom Egg",
+            "Uncommon Egg"
+        },
+        Equip = {
+            "Legendary Egg",
+            "Mythical Egg",
+            "Bug Egg"
+        }
     },
     UpgradePetSlots = 2,
-    RemoveTrashFruits = true
+    SendHoneyMachineQuests = true
 }
 getgenv().Key = "MARU-MSMC-7N6UY-D6FR-5OGRR-TFLO"
 getgenv().id = "1093871052112789586"

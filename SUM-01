@@ -1,5 +1,5 @@
 setfpscap(3)
-wait(60)
+wait(20)
 script_key = "lhmQvFSkkYVgLnpLLWyWCTMWCTnsuicq";
 getgenv().UserConfig = {
     AddFriends          = true,
@@ -10,16 +10,16 @@ getgenv().UserConfig = {
     AutoRollDice        = true,
     ["Super Ticket"]    = "Robot Claw",
     ["Use Super Ticket"] = true,
-    ["Season Challenges"] = false, -- false bc ss end 
+    ["Season Challenges"] = true, -- false bc ss end 
     ["Giant Chest"] = false,
     ["Void Chest"] = false,
     ["Golden Chest"] = false,
-    ["Royal Chest"] = false,
+    ["Royal Chest"] = true,
     ["Dice Chest"] = true, -- default is false if not set
     ["Summer Shop"] = true, -- default is true if not set
     ["Mastery"] = {Pets = 15,Buffs = 10,Shops = 10},
     ["Craft Potions"] = {
-        Enable = true,
+        Enable = false,
         MinGems = "100k",
         ["Potion Needed"] = {
             {"Coins", Level = 5},
@@ -42,7 +42,7 @@ getgenv().UserConfig = {
         Targets = {"Fossil Egg"},
         Luck = 5 -- dont change
     },
-    ["Secret Bounty"] = {"D0GGY1337"},
+    ["Secret Bounty"] = {"Overlord Plushie", "Everblaze", "Beelzebub"},
     ["Secret Bounty x1 Egg"] = false, -- true = 100% Secret Bounty
     FindDuck = "Fossil Egg", -- Fruit Egg, Nightmare Egg, Common Egg, Cyber Egg, Neon Egg
     ["Replace FindDuck"] = "Fossil Egg",
@@ -51,7 +51,7 @@ getgenv().UserConfig = {
     ["Min gems"] = "1m",
     ["Min coins"] = "100m",
     ["Min tickets"] = "10m",
-    ["Min seashells"] = "10b",
+    ["Min seashells"] = "1b",
     ["Gems coefficient"] = 0,
     ["Tickets coefficient"] = 100,
     ["Seashells coefficient"] = 24,
@@ -69,3 +69,4 @@ getgenv().UserConfig = {
         ["Special Pets"] = {"Monolith"}
     }
 }
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/0cf205a620e81d1f3c3d3f75474ab32f.lua"))()

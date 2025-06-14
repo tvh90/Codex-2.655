@@ -1,6 +1,6 @@
 setfpscap(3)
 wait(60)
-script_key = "nhOYZNPTAKAkspNcNMtjksPtYsoLKzwz";
+script_key = "xUiAFWpGNIzVJpajEHsiYuVkanzDyahi";
 getgenv().UserConfig = {
     AddFriends          = true,
     RedeemCode = {"RELEASE","Lucky", "update2","Easter","Sylentlyssorry", "update4"},
@@ -72,4 +72,4 @@ getgenv().UserConfig = {
         ["Special Pets"] = {"Monolith"}
     }
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/b85c17425e59b76c0487999c21ef4557.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ccbddd87670e37be6aa0dbf793748a94.lua"))()

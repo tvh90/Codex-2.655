@@ -60,8 +60,8 @@ getgenv().UserConfig = {
     ["Webhook"] = {
         Enable = true,
         Note = "xxx",
-        ID = "800731012753129474",
-        URL = "https://discord.com/api/webhooks/1342650468995829831/Zw9Amdzu1Oz6DY5ajoApNWr4eYPX6PT5bwhh-9SWtUTXknCPxFWyYc085zyhQJbHUEHn",
+        ID = "",
+        URL = "",
         Rarity = {
             "Legendary",
             "Secret"

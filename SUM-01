@@ -40,9 +40,9 @@ getgenv().UserConfig = {
             "Mythic V"
         }
     },
-    ["Rifts"] = {
+   ["Rifts"] = {
         AlwaysFindRifts = true,
-        Targets = {"Voidcrystal Egg"},
+        Targets = {"Voidcrystal Egg", "Bruh Egg"},
         Luck = 5
     },
     ["Secret Bounty"] = {"True Titan"},

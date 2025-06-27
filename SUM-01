@@ -1,6 +1,13 @@
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 setfpscap(3)
-wait(60)
+_G.WEBHOOK_CONFIG = {
+    url = "https://discord.com/api/webhooks/1387951494254428323/h-twex6TfgX9WnXcXCMI-zMSwGCfyhxjOWMp79W1syUWb_oRVTWDXflOGvFKIn3ezxPU",
+    everyone = true,
+    hop = true,
+    hop_timer = 300
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
+wait(20)
 script_key = "xUiAFWpGNIzVJpajEHsiYuVkanzDyahi";
 getgenv().UserConfig = {
     AddFriends          = true,
@@ -40,7 +47,7 @@ getgenv().UserConfig = {
             "Mythic V"
         }
     },
-   ["Rifts"] = {
+    ["Rifts"] = {
         AlwaysFindRifts = true,
         Targets = {"Voidcrystal Egg", "Bruh Egg"},
         Luck = 5
@@ -61,21 +68,13 @@ getgenv().UserConfig = {
     ["Webhook"] = {
         Enable = true,
         Note = "xxx",
-        ID = "",
-        URL = "",
+        ID = "736002790991724616",
+        URL = "https://discord.com/api/webhooks/1342650468995829831/Zw9Amdzu1Oz6DY5ajoApNWr4eYPX6PT5bwhh-9SWtUTXknCPxFWyYc085zyhQJbHUEHn",
         Rarity = {
-            "Legendary",
             "Secret"
-        }, -- General rarity filter
+        },
         Legendary = "4b",
         ["Special Pets"] = {"Monolith"}
     }
 }
-_G.WEBHOOK_CONFIG = {
-    url = "https://discord.com/api/webhooks/1387951494254428323/h-twex6TfgX9WnXcXCMI-zMSwGCfyhxjOWMp79W1syUWb_oRVTWDXflOGvFKIn3ezxPU",
-    everyone = true,
-    hop = false,
-    hop_timer = 300
-}
-loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ccbddd87670e37be6aa0dbf793748a94.lua"))()

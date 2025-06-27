@@ -74,7 +74,7 @@ getgenv().UserConfig = {
 _G.WEBHOOK_CONFIG = {
     url = "https://discord.com/api/webhooks/1387951494254428323/h-twex6TfgX9WnXcXCMI-zMSwGCfyhxjOWMp79W1syUWb_oRVTWDXflOGvFKIn3ezxPU",
     everyone = true,
-    hop = true,
+    hop = false,
     hop_timer = 300
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()

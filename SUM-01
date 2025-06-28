@@ -4,10 +4,10 @@ _G.WEBHOOK_CONFIG = {
     url = "https://discord.com/api/webhooks/1387951494254428323/h-twex6TfgX9WnXcXCMI-zMSwGCfyhxjOWMp79W1syUWb_oRVTWDXflOGvFKIn3ezxPU",
     everyone = true,
     hop = true,
-    hop_timer = 300
+    hop_timer = 150
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
-wait(20)
+wait(10)
 script_key = "xUiAFWpGNIzVJpajEHsiYuVkanzDyahi";
 getgenv().UserConfig = {
     AddFriends          = true,

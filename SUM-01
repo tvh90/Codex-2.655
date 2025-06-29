@@ -1,11 +1,5 @@
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 setfpscap(3)
-_G.WEBHOOK_CONFIG = {
-    url = "https://discord.com/api/webhooks/1387951494254428323/h-twex6TfgX9WnXcXCMI-zMSwGCfyhxjOWMp79W1syUWb_oRVTWDXflOGvFKIn3ezxPU",
-    everyone = true,
-    hop = true,
-    hop_timer = 150
-}
 loadstring(game:HttpGet("https://pastebin.com/raw/xJrz3dpf"))()
 wait(10)
 script_key = "xUiAFWpGNIzVJpajEHsiYuVkanzDyahi";

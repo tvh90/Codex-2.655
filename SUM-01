@@ -6,7 +6,7 @@ _G.WEBHOOK_CONFIG = {
     hop = true,
     hop_timer = 150
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/bag/refs/heads/main/io"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/xJrz3dpf"))()
 wait(10)
 script_key = "xUiAFWpGNIzVJpajEHsiYuVkanzDyahi";
 getgenv().UserConfig = {

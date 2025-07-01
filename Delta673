@@ -1,23 +1,67 @@
--- Anti SEC Protection
 local mt = getrawmetatable(game)
-setreadonly(mt, false)
-local old = mt.__namecall
+if mt then
+    setreadonly(mt, false)
+    local old = mt.__namecall
 
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method == "Kick" or tostring(method):lower():find("kick") then
-        return warn("[SEC] Kick blocked")
+    local block_keywords = {"log", "report", "exploit", "cheat", "suspicious", "flag", "data"}
+
+    local function should_block(name)
+        name = name:lower()
+        for _, kw in pairs(block_keywords) do
+            if name:find(kw) then return true end
+        end
+        return false
     end
-    return old(self, ...)
-end)
 
-hookfunction(game.HttpService.HttpPost, function(...) 
-    return warn("[SEC] Blocked HttpPost")
-end)
+    mt.__namecall = newcclosure(function(self, ...)
+        local method = getnamecallmethod()
+        local args = {...}
 
--- Random delay handler
+        -- Chặn Kick từ namecall
+        if method == "Kick" or tostring(method):lower():find("kick") then
+            warn("[SEC] Kick blocked")
+            return
+        end
+
+        -- Chặn Remote nghi ngờ
+        if typeof(self) == "Instance" then
+            if (self:IsA("RemoteEvent") or self:IsA("RemoteFunction")) and should_block(self.Name) then
+                warn("[SEC] Blocked suspicious remote:", self.Name)
+                return nil
+            end
+        end
+
+        return old(self, unpack(args))
+    end)
+end
+
+-- Chặn Kick trực tiếp
+if game.Players.LocalPlayer then
+    game.Players.LocalPlayer.Kick = function(...) warn("[SEC] Direct Kick blocked") return nil end
+end
+
+-- Hook Http Post
+if hookfunction and game:GetService("HttpService") then
+    hookfunction(game:GetService("HttpService").PostAsync, function(...)
+        warn("[SEC] Blocked HttpPost")
+        return nil
+    end)
+end
+
+-- Hook Destroy các GUI
+if hookfunction and typeof(Instance.Destroy) == "function" then
+    hookfunction(Instance.Destroy, function(self, ...)
+        if tostring(self):lower():find("gui") then
+            warn("[SEC] Prevented Destroy:", self:GetFullName())
+            return nil
+        end
+        return self:Destroy(...)
+    end)
+end
+
+-- Delay ngẫu nhiên để tránh bị nghi là bot
 function random_delay(min, max)
-    return task.wait(math.random(min*100, max*100)/100)
+    return task.wait(math.random(min * 100, max * 100) / 100)
 end
 -- Max level, godhuman, cdk, sgt
 script_key = "QSHYVAMJTGKIND4A433OF3NFWCQKO" -- premium only, u can leave it blank if ur not

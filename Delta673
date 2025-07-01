@@ -1,3 +1,30 @@
+local block_keywords = {"log", "report", "exploit", "cheat", "suspicious", "flag"}
+local function should_block(name)
+    name = name:lower()
+    for _, kw in pairs(block_keywords) do
+        if name:find(kw) then return true end
+    end
+    return false
+end
+
+local old = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+
+    if typeof(self) == "Instance" then
+        if self:IsA("RemoteEvent") and method == "FireServer" and should_block(self.Name) then
+            warn("[SEC] Blocked suspicious RemoteEvent:", self.Name)
+            return nil
+        end
+        if self:IsA("RemoteFunction") and method == "InvokeServer" and should_block(self.Name) then
+            warn("[SEC] Blocked suspicious RemoteFunction:", self.Name)
+            return nil
+        end
+    end
+
+    return old(self, unpack(args))
+end)
 -- Anti SEC Protection
 local mt = getrawmetatable(game)
 setreadonly(mt, false)

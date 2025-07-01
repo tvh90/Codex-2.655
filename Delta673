@@ -1,5 +1,5 @@
--- ✅ Anti Kick, HttpPost & RemoteEvent Detection (1 lần hook duy nhất)
 local mt = getrawmetatable(game)
+if not mt then return end
 setreadonly(mt, false)
 
 local old_namecall = mt.__namecall
@@ -30,7 +30,6 @@ mt.__namecall = newcclosure(function(self, ...)
         return
     end
 
-    -- 🚫 Chặn RemoteEvent đáng nghi
     if typeof(self) == "Instance" and self:IsA("RemoteEvent") and method == "FireServer" then
         if should_block(self.Name) then
             warn("[SEC] Blocked suspicious RemoteEvent:", self.Name, args)
@@ -38,7 +37,6 @@ mt.__namecall = newcclosure(function(self, ...)
         end
     end
 
-    -- 🚫 Chặn RemoteFunction đáng nghi
     if typeof(self) == "Instance" and self:IsA("RemoteFunction") and method == "InvokeServer" then
         if should_block(self.Name) then
             warn("[SEC] Blocked suspicious RemoteFunction:", self.Name, args)
@@ -46,11 +44,9 @@ mt.__namecall = newcclosure(function(self, ...)
         end
     end
 
-    -- ✅ Nếu không khớp gì thì gọi lại namecall gốc
     return old_namecall(self, unpack(args))
 end)
 
--- ✅ Hook chặn HttpPost (log về server)
 if hookfunction and game:GetService("HttpService") then
     local old_http = hookfunction(game:GetService("HttpService").PostAsync, function(...)
         warn("[SEC] Blocked Http Post")

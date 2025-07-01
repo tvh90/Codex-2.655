@@ -1,4 +1,3 @@
--- Anti SEC Protection
 local mt = getrawmetatable(game)
 setreadonly(mt, false)
 local old = mt.__namecall
@@ -15,9 +14,43 @@ hookfunction(game.HttpService.HttpPost, function(...)
     return warn("[SEC] Blocked HttpPost")
 end)
 
--- Random delay handler
+local block_keywords = {
+    "log", "report", "exploit", "cheat", "suspicious", "data", "security"
+}
+
+local function should_block(name)
+    name = name:lower()
+    for _, keyword in pairs(block_keywords) do
+        if name:find(keyword) then
+            return true
+        end
+    end
+    return false
+end
+
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+
+    if typeof(self) == "Instance" and self:IsA("RemoteEvent") and method == "FireServer" then
+        if should_block(self.Name) then
+            warn("[SEC] Blocked suspicious RemoteEvent:", self.Name, args)
+            return nil
+        end
+    end
+
+    if typeof(self) == "Instance" and self:IsA("RemoteFunction") and method == "InvokeServer" then
+        if should_block(self.Name) then
+            warn("[SEC] Blocked suspicious RemoteFunction:", self.Name, args)
+            return nil
+        end
+    end
+
+    return old(self, unpack(args))
+end)
+
 function random_delay(min, max)
-    return task.wait(math.random(min*100, max*100)/100)
+    return task.wait(math.random(min * 100, max * 100) / 100)
 end
 -- Max level, godhuman, cdk, sgt
 script_key = "QSHYVAMJTGKIND4A433OF3NFWCQKO" -- premium only, u can leave it blank if ur not

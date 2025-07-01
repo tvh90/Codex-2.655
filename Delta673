@@ -1,4 +1,4 @@
--- Anti SEC Protection
+-- 🛡️ Anti SEC Protection
 local mt = getrawmetatable(game)
 setreadonly(mt, false)
 local old = mt.__namecall
@@ -15,13 +15,50 @@ hookfunction(game.HttpService.HttpPost, function(...)
     return warn("[SEC] Blocked HttpPost")
 end)
 
--- Random delay handler
-function random_delay(min, max)
-    return task.wait(math.random(min*100, max*100)/100)
+-- 🔐 Hook RemoteEvent / RemoteFunction anti log
+local block_keywords = {
+    "log", "report", "exploit", "cheat", "suspicious", "data", "security"
+}
+
+local function should_block(name)
+    name = name:lower()
+    for _, keyword in pairs(block_keywords) do
+        if name:find(keyword) then
+            return true
+        end
+    end
+    return false
 end
--- Max level, godhuman, cdk, sgt
-script_key = "QSHYVAMJTGKIND4A433OF3NFWCQKO" -- premium only, u can leave it blank if ur not
-getgenv().Shutdown = false -- Turn on if u are farming bulk accounts
+
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+
+    if typeof(self) == "Instance" and self:IsA("RemoteEvent") and method == "FireServer" then
+        if should_block(self.Name) then
+            warn("[SEC] Blocked suspicious RemoteEvent:", self.Name, args)
+            return nil
+        end
+    end
+
+    if typeof(self) == "Instance" and self:IsA("RemoteFunction") and method == "InvokeServer" then
+        if should_block(self.Name) then
+            warn("[SEC] Blocked suspicious RemoteFunction:", self.Name, args)
+            return nil
+        end
+    end
+
+    return old(self, unpack(args))
+end)
+
+-- ⏱️ Random delay handler
+function random_delay(min, max)
+    return task.wait(math.random(min * 100, max * 100) / 100)
+end
+
+-- ✅ Config Script
+script_key = "QSHYVAMJTGKIND4A433OF3NFWCQKO"
+getgenv().Shutdown = false
 getgenv().Configs = {
     ["Team"] = "Marines",
     ["FPS Boost"] = {
@@ -32,22 +69,22 @@ getgenv().Configs = {
         ["Enable"] = false,
         ["When x2 Exp Expired"] = false
     },
-    ["Hop"] = { -- premium only
+    ["Hop"] = {
         ["Enable"] = true,
         ["Hop Find Tushita"] = true,
         ["Hop Find Valkyrie Helm"] = true,
         ["Hop Find Mirror Fractal"] = true,
-        ["Hop Find Darkbeard"] = true, -- For skull guitar
-        ["Hop Find Soul Reaper"] = true, -- For CDK
-        ["Hop Find Mirage"] = true, -- For pull lever
-        ["Find Fruit"] = false, -- Will find 1m+ fruit to unlock swan door to access third sea
+        ["Hop Find Darkbeard"] = true,
+        ["Hop Find Soul Reaper"] = true,
+        ["Hop Find Mirage"] = true,
+        ["Find Fruit"] = false,
     },
     ["Farm Mastery"] = {
         ["Enable"] = true,
-        ["Farm Mastery Weapons"] = {"Sword", "Gun", "Blox Fruit"}, -- Blox Fruit, Gun (left -> right: High -> Low Priority)
+        ["Farm Mastery Weapons"] = {"Sword", "Gun", "Blox Fruit"},
         ["Swords To Farm"] = {"Cursed Dual Katana"},
         ["Guns To Farm"] = {"Skull Guitar"},
-        ["Mastery Health (%)"] = 40 -- For Blox Fruit, Gun
+        ["Mastery Health (%)"] = 40
     },
     ["Farm Config"] = {
         ["First Farm At Sky"] = true,
@@ -55,8 +92,8 @@ getgenv().Configs = {
     },
     ["Trackstat"] = {
         ["Enable"] = false,
-        ["Key"] = "", -- Get from xerohub.click
-        ["Device"] = "test" -- u can put any name here
+        ["Key"] = "",
+        ["Device"] = "test"
     },
     ["Auto Spawn rip_indra"] = true,
     ["Auto Spawn Dough King"] = false,
@@ -69,9 +106,16 @@ getgenv().Configs = {
     ["Skull Guitar"] = true,
     ["Cursed Dual Katana"] = true,
     ["Switch Melee"] = true,
-    ["Eat Fruit"] = "Magma Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
-    ["Snipe Fruit"] = "Dough Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
+    ["Eat Fruit"] = "Magma Fruit",
+    ["Snipe Fruit"] = "Dough Fruit",
     ["Lock Fragment"] = 30000,
-    ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
+    ["Buy Stuffs"] = true
 }
-repeat random_delay(1, 2) pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
+
+-- 🚀 Tải script chính
+repeat random_delay(1, 2) until game:IsLoaded()
+repeat random_delay(1, 2)
+    pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))()
+    end)
+until getgenv().Check_Execute

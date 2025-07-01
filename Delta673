@@ -1,50 +1,56 @@
-local block_keywords = {"log", "report", "exploit", "cheat", "suspicious", "flag"}
-local function should_block(name)
-    name = name:lower()
-    for _, kw in pairs(block_keywords) do
-        if name:find(kw) then return true end
+-- ✅ ANTI SEC HOÀN CHỈNH - chỉ hook 1 lần, không lỗi
+local mt = getrawmetatable(game)
+if mt then
+    setreadonly(mt, false)
+    local old = mt.__namecall
+
+    local block_keywords = {"log", "report", "exploit", "cheat", "suspicious", "flag", "data"}
+
+    local function should_block(name)
+        name = name:lower()
+        for _, kw in pairs(block_keywords) do
+            if name:find(kw) then return true end
+        end
+        return false
     end
-    return false
+
+    mt.__namecall = newcclosure(function(self, ...)
+        local method = getnamecallmethod()
+        local args = {...}
+
+        -- Chặn Kick
+        if method == "Kick" or tostring(method):lower():find("kick") then
+            warn("[SEC] Kick blocked")
+            return
+        end
+
+        -- Chặn Remote đáng ngờ
+        if typeof(self) == "Instance" then
+            if self:IsA("RemoteEvent") and method == "FireServer" and should_block(self.Name) then
+                warn("[SEC] Blocked suspicious RemoteEvent:", self.Name)
+                return nil
+            end
+            if self:IsA("RemoteFunction") and method == "InvokeServer" and should_block(self.Name) then
+                warn("[SEC] Blocked suspicious RemoteFunction:", self.Name)
+                return nil
+            end
+        end
+
+        return old(self, unpack(args))
+    end)
 end
 
-local old = mt.__namecall
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    local args = {...}
+-- HttpPost Anti
+if hookfunction and game:GetService("HttpService") then
+    hookfunction(game:GetService("HttpService").PostAsync, function(...)
+        warn("[SEC] Blocked HttpPost")
+        return nil
+    end)
+end
 
-    if typeof(self) == "Instance" then
-        if self:IsA("RemoteEvent") and method == "FireServer" and should_block(self.Name) then
-            warn("[SEC] Blocked suspicious RemoteEvent:", self.Name)
-            return nil
-        end
-        if self:IsA("RemoteFunction") and method == "InvokeServer" and should_block(self.Name) then
-            warn("[SEC] Blocked suspicious RemoteFunction:", self.Name)
-            return nil
-        end
-    end
-
-    return old(self, unpack(args))
-end)
--- Anti SEC Protection
-local mt = getrawmetatable(game)
-setreadonly(mt, false)
-local old = mt.__namecall
-
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method == "Kick" or tostring(method):lower():find("kick") then
-        return warn("[SEC] Kick blocked")
-    end
-    return old(self, ...)
-end)
-
-hookfunction(game.HttpService.HttpPost, function(...) 
-    return warn("[SEC] Blocked HttpPost")
-end)
-
--- Random delay handler
+-- Delay ngẫu nhiên
 function random_delay(min, max)
-    return task.wait(math.random(min*100, max*100)/100)
+    return task.wait(math.random(min * 100, max * 100) / 100)
 end
 -- Max level, godhuman, cdk, sgt
 script_key = "QSHYVAMJTGKIND4A433OF3NFWCQKO" -- premium only, u can leave it blank if ur not

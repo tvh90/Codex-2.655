@@ -1,4 +1,3 @@
--- 🛡️ Anti SEC Protection
 local mt = getrawmetatable(game)
 setreadonly(mt, false)
 local old = mt.__namecall
@@ -15,7 +14,6 @@ hookfunction(game.HttpService.HttpPost, function(...)
     return warn("[SEC] Blocked HttpPost")
 end)
 
--- 🔐 Hook RemoteEvent / RemoteFunction anti log
 local block_keywords = {
     "log", "report", "exploit", "cheat", "suspicious", "data", "security"
 }
@@ -56,7 +54,6 @@ function random_delay(min, max)
     return task.wait(math.random(min * 100, max * 100) / 100)
 end
 
--- ✅ Config Script
 script_key = "QSHYVAMJTGKIND4A433OF3NFWCQKO"
 getgenv().Shutdown = false
 getgenv().Configs = {
@@ -111,8 +108,6 @@ getgenv().Configs = {
     ["Lock Fragment"] = 30000,
     ["Buy Stuffs"] = true
 }
-
--- 🚀 Tải script chính
 repeat random_delay(1, 2) until game:IsLoaded()
 repeat random_delay(1, 2)
     pcall(function()

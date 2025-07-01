@@ -1,3 +1,24 @@
+-- Anti SEC Protection
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local old = mt.__namecall
+
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    if method == "Kick" or tostring(method):lower():find("kick") then
+        return warn("[SEC] Kick blocked")
+    end
+    return old(self, ...)
+end)
+
+hookfunction(game.HttpService.HttpPost, function(...) 
+    return warn("[SEC] Blocked HttpPost")
+end)
+
+-- Random delay handler
+function random_delay(min, max)
+    return task.wait(math.random(min*100, max*100)/100)
+end
 -- Max level, godhuman, cdk, sgt
 script_key = "QSHYVAMJTGKIND4A433OF3NFWCQKO" -- premium only, u can leave it blank if ur not
 getgenv().Shutdown = false -- Turn on if u are farming bulk accounts

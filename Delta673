@@ -49,7 +49,6 @@ mt.__namecall = newcclosure(function(self, ...)
     return old(self, unpack(args))
 end)
 
--- ⏱️ Random delay handler
 function random_delay(min, max)
     return task.wait(math.random(min * 100, max * 100) / 100)
 end

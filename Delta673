@@ -139,4 +139,57 @@ end)
 getfenv().identifyexecutor = function()
     return "RandomUser_" .. math.random(100000, 999999)
 end
+-- 🧠 PHẦN 2: GIẢ HÀNH VI NGƯỜI DÙNG
+local actions = {
+    function()
+        local msg = {"hi", "anyone?", "pls help", "yo", "nice", "need quest"}
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+            msg[math.random(1,#msg)], "All"
+        )
+    end,
+    function()
+        wait(math.random(2, 5))
+    end,
+    function()
+        local cam = workspace.CurrentCamera
+        cam.CFrame = cam.CFrame * CFrame.Angles(0, math.rad(math.random(-15, 15)), 0)
+    end,
+    function()
+        local fakeGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
+        local label = Instance.new("TextLabel", fakeGui)
+        label.Text = "Ping: "..math.random(40, 90)
+        label.Size = UDim2.new(0, 100, 0, 20)
+        label.Position = UDim2.new(0, 10, 0, 10)
+        task.delay(10, function() fakeGui:Destroy() end)
+    end,
+    function()
+        local hum = lp.Character and lp.Character:FindFirstChild("Humanoid") or nil
+        if hum then
+            hum:MoveTo(lp.Character.HumanoidRootPart.Position + Vector3.new(math.random(-10,10), 0, math.random(-10,10)))
+        end
+    end,
+}
+
+spawn(function()
+    while true do
+        wait(math.random(300, 600))
+        pcall(function()
+            local act = actions[math.random(1, #actions)]
+            act()
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(math.random(600, 900)) do
+        local players = game:GetService("Players"):GetPlayers()
+        if #players > 1 then
+            local target = players[math.random(2, #players)]
+            pcall(function()
+                lp:RequestFriendship(target)
+                warn("[Fake] Sent friend request to:", target.Name)
+            end)
+        end
+    end
+end)
 

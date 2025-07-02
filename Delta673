@@ -1,3 +1,12 @@
+-- ✅ Spoof HWID & Executor
+getfenv().gethwid = function()
+    return "LD-HWID-" .. tostring(math.random(10000000, 99999999))
+end
+getfenv().DeviceID = "LD-DEVICE-" .. tostring(math.random(1000000, 9999999))
+getfenv().identifyexecutor = function()
+    return "Delta_" .. tostring(math.random(10000, 99999))
+end
+
 -- Anti SEC Protection
 local mt = getrawmetatable(game)
 setreadonly(mt, false)

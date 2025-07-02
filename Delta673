@@ -135,3 +135,8 @@ local old_invoke = hookfunction(Instance.new("RemoteFunction").InvokeServer, fun
 end)
 
 -- ✅ Đã bật full bảo vệ AntiSEC (LDPlayer 9 + Delta)
+
+getfenv().identifyexecutor = function()
+    return "RandomUser_" .. math.random(100000, 999999)
+end
+

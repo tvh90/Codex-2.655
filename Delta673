@@ -75,3 +75,32 @@ getgenv().Configs = {
     ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
 }
 repeat random_delay(1, 2) pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
+
+-- ✅ Hook RemoteEvent / RemoteFunction để chặn report, log, cheat
+local old
+old = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+    local name = tostring(self.Name):lower()
+
+    -- Chặn Kick
+    if method == "Kick" or name:find("kick") then
+        return warn("[SEC] Kick blocked (__namecall)")
+    end
+
+    -- Chặn remote chứa từ khóa nguy hiểm
+    if self:IsA("RemoteEvent") or self:IsA("RemoteFunction") then
+        for _, v in ipairs({"log", "report", "cheat", "exploit", "flag", "suspicious"}) do
+            if name:find(v) then
+                return warn("[SEC] Blocked suspicious remote:", name)
+            end
+            for _, a in ipairs(args) do
+                if type(a) == "string" and a:lower():find(v) then
+                    return warn("[SEC] Blocked suspicious arg in", name)
+                end
+            end
+        end
+    end
+
+    return old(self, unpack(args))
+end))

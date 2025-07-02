@@ -76,14 +76,7 @@ getgenv().Configs = {
 }
 repeat random_delay(1, 2) pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
 
--- ✅ Hook RemoteEvent / RemoteFunction để chặn report, log, cheat
-local old
-old = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    local args = {...}
-    local name = tostring(self.Name):lower()
-
-    -- Chặn remote chứa từ khóa nguy hiểm
+-- Chặn remote chứa từ khóa nguy hiểm
     if self:IsA("RemoteEvent") or self:IsA("RemoteFunction") then
         for _, v in ipairs({"log", "report", "cheat", "exploit", "flag", "suspicious"}) do
             if name:find(v) then

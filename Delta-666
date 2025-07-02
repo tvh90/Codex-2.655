@@ -75,3 +75,63 @@ getgenv().Configs = {
     ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
 }
 repeat random_delay(1, 2) pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
+-- ✅ AntiSEC Full Protection cho Delta Executor + LDPlayer 9
+
+-- 🛡️ Hook __namecall để chặn Kick qua Remote
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local old = mt.__namecall
+
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    if method == "Kick" or tostring(method):lower():find("kick") then
+        return warn("[SEC] Blocked __namecall Kick")
+    end
+    return old(self, ...)
+end)
+
+-- 🛡️ Hook Kick trực tiếp (bypass __namecall)
+local lp = game:GetService("Players").LocalPlayer
+hookfunction(lp.Kick, function(...)
+    return warn("[SEC] Blocked direct Kick")
+end)
+
+-- 🛡️ Hook các HTTP nguy hiểm
+hookfunction(game.HttpService.HttpPost, function(...) 
+    return warn("[SEC] Blocked HttpPost")
+end)
+
+hookfunction(game.HttpService.HttpPostAsync, function(...) 
+    return warn("[SEC] Blocked HttpPostAsync")
+end)
+
+hookfunction(game.HttpService.HttpGet, function(...) 
+    return warn("[SEC] Blocked HttpGet")
+end)
+
+-- 🛡️ Hook RemoteEvent, RemoteFunction độc hại
+local bad_keywords = {"log", "report", "exploit", "cheat", "suspicious", "flag", "data"}
+
+local function is_suspicious(name)
+    name = tostring(name):lower()
+    for _, kw in ipairs(bad_keywords) do
+        if name:find(kw) then return true end
+    end
+    return false
+end
+
+local old_fire = hookfunction(Instance.new("RemoteEvent").FireServer, function(self, ...)
+    if is_suspicious(self.Name) then
+        return warn("[SEC] Blocked RemoteEvent:", self.Name)
+    end
+    return old_fire(self, ...)
+end)
+
+local old_invoke = hookfunction(Instance.new("RemoteFunction").InvokeServer, function(self, ...)
+    if is_suspicious(self.Name) then
+        return warn("[SEC] Blocked RemoteFunction:", self.Name)
+    end
+    return old_invoke(self, ...)
+end)
+
+-- ✅ Đã bật full bảo vệ AntiSEC (LDPlayer 9 + Delta)

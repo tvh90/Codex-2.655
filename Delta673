@@ -1,6 +1,3 @@
-getfenv().identifyexecutor = function()
-    return "RandomUser_" .. math.random(100000, 999999)
-end
 -- ✅ Spoof HWID & Executor
 getfenv().gethwid = function()
     return "LD-HWID-" .. tostring(math.random(10000000, 99999999))

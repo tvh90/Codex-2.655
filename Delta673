@@ -102,7 +102,7 @@ getgenv().Configs = {
         ["Hop Find Darkbeard"] = true, -- For skull guitar
         ["Hop Find Soul Reaper"] = true, -- For CDK
         ["Hop Find Mirage"] = true, -- For pull lever
-        ["Find Fruit"] = false, -- Will find 1m+ fruit to unlock swan door to access third sea
+        ["Find Fruit"] = true, -- Will find 1m+ fruit to unlock swan door to access third sea
     },
     ["Farm Mastery"] = {
         ["Enable"] = true,
@@ -122,7 +122,7 @@ getgenv().Configs = {
     },
     ["Auto Spawn rip_indra"] = true,
     ["Auto Spawn Dough King"] = false,
-    ["Auto Pull Lever"] = false,
+    ["Auto Pull Lever"] = true,
     ["Auto Collect Berry"] = true,
     ["Auto Evo Race"] = true,
     ["Awaken Fruit"] = true,

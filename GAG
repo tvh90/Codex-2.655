@@ -34,4 +34,4 @@ getgenv().UserConfig = {
     ["Discord ID"] = "229850538911596545",
     ["Note Webhook"] = "Danny",
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/78166fd71f1292c666d3fa27896677f5.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/0c5913f128d543df5794a837e38707c4.lua"))()

@@ -53,4 +53,4 @@ getgenv().Configs = {
     ["Lock Fragment"] = 30000,
     ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
 }
-repeat random_delay(1, 2) pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
+repeat task.wait() pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute

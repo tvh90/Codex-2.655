@@ -38,7 +38,7 @@ getgenv().Configs = {
         ["Device"] = "test" -- u can put any name here
     },
     ["Auto Spawn rip_indra"] = true,
-    ["Auto Spawn Dough King"] = false,
+    ["Auto Spawn Dough King"] = true,
     ["Auto Pull Lever"] = true,
     ["Auto Collect Berry"] = true,
     ["Auto Evo Race"] = true,

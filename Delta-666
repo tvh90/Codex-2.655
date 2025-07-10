@@ -1,3 +1,12 @@
+-- ✅ Spoof HWID & Executor
+getfenv().gethwid = function()
+    return "LD-HWID-" .. tostring(math.random(10000000, 99999999))
+end
+getfenv().DeviceID = "LD-DEVICE-" .. tostring(math.random(1000000, 9999999))
+getfenv().identifyexecutor = function()
+    return "Delta_" .. tostring(math.random(10000, 99999))
+end
+
 -- Anti SEC Protection
 local mt = getrawmetatable(game)
 setreadonly(mt, false)
@@ -19,6 +28,59 @@ end)
 function random_delay(min, max)
     return task.wait(math.random(min*100, max*100)/100)
 end
+-- 🧠 PHẦN 2: GIẢ HÀNH VI NGƯỜI DÙNG
+local actions = {
+    function()
+        local msg = {"hi", "anyone?", "pls help", "yo", "nice", "need quest"}
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+            msg[math.random(1,#msg)], "All"
+        )
+    end,
+    function()
+        wait(math.random(2, 5))
+    end,
+    function()
+        local cam = workspace.CurrentCamera
+        cam.CFrame = cam.CFrame * CFrame.Angles(0, math.rad(math.random(-15, 15)), 0)
+    end,
+    function()
+        local fakeGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
+        local label = Instance.new("TextLabel", fakeGui)
+        label.Text = "Ping: "..math.random(40, 90)
+        label.Size = UDim2.new(0, 100, 0, 20)
+        label.Position = UDim2.new(0, 10, 0, 10)
+        task.delay(10, function() fakeGui:Destroy() end)
+    end,
+    function()
+        local hum = lp.Character and lp.Character:FindFirstChild("Humanoid") or nil
+        if hum then
+            hum:MoveTo(lp.Character.HumanoidRootPart.Position + Vector3.new(math.random(-10,10), 0, math.random(-10,10)))
+        end
+    end,
+}
+
+spawn(function()
+    while true do
+        wait(math.random(300, 600))
+        pcall(function()
+            local act = actions[math.random(1, #actions)]
+            act()
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(math.random(600, 900)) do
+        local players = game:GetService("Players"):GetPlayers()
+        if #players > 1 then
+            local target = players[math.random(2, #players)]
+            pcall(function()
+                lp:RequestFriendship(target)
+                warn("[Fake] Sent friend request to:", target.Name)
+            end)
+        end
+    end
+end)
 -- Max level, godhuman, cdk, sgt
 script_key = "QSHYVAMJTGKIND4A433OF3NFWCQKO" -- premium only, u can leave it blank if ur not
 getgenv().Shutdown = false -- Turn on if u are farming bulk accounts
@@ -40,7 +102,7 @@ getgenv().Configs = {
         ["Hop Find Darkbeard"] = true, -- For skull guitar
         ["Hop Find Soul Reaper"] = true, -- For CDK
         ["Hop Find Mirage"] = true, -- For pull lever
-        ["Find Fruit"] = false, -- Will find 1m+ fruit to unlock swan door to access third sea
+        ["Find Fruit"] = true, -- Will find 1m+ fruit to unlock swan door to access third sea
     },
     ["Farm Mastery"] = {
         ["Enable"] = true,
@@ -60,7 +122,7 @@ getgenv().Configs = {
     },
     ["Auto Spawn rip_indra"] = true,
     ["Auto Spawn Dough King"] = false,
-    ["Auto Pull Lever"] = false,
+    ["Auto Pull Lever"] = true,
     ["Auto Collect Berry"] = true,
     ["Auto Evo Race"] = true,
     ["Awaken Fruit"] = true,
@@ -133,5 +195,4 @@ local old_invoke = hookfunction(Instance.new("RemoteFunction").InvokeServer, fun
     end
     return old_invoke(self, ...)
 end)
-
 -- ✅ Đã bật full bảo vệ AntiSEC (LDPlayer 9 + Delta)

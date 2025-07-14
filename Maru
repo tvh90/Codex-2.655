@@ -14,8 +14,11 @@ _G.MainSettings = {
     ['AFKCheck'] = 150,
     ["LockFragments"] = 20000,
     ["LockFruitsRaid"] = {
-        [1] = "Dough-Dough",
-        [2] = "Dragon-Dragon",        
+            [1] = "Dough-Dough",
+            [2] = "Kitsune-Kitsune",
+            [3] = "Yeti-Yeti",
+            [4] = "Dragon (East)-Dragon (East)",
+            [5] = "Dragon (West)-Dragon (West)"        
     }
 }
 _G.SharkAnchor_Settings = {

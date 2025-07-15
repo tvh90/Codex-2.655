@@ -1,120 +1,102 @@
+-- ✅ Hàm delay ngẫu nhiên
+function random_delay(min, max)
+    return task.wait(math.random(min * 100, max * 100) / 100)
+end
+
 -- ✅ Spoof HWID & Executor
 getgenv().gethwid = function()
     return "LD-HWID-" .. tostring(math.random(10000000, 99999999))
 end
-
 getgenv().DeviceID = "LD-DEVICE-" .. tostring(math.random(1000000, 9999999))
 getgenv().identifyexecutor = function()
     return "Delta_" .. tostring(math.random(10000, 99999))
 end
 
--- 🛡️ Hook Kick từ __namecall
-local mt = getrawmetatable(game)
-setreadonly(mt, false)
+-- 🛡️ Hook Kick từ __namecall & trực tiếp
+local mt = getrawmetatable(game); setreadonly(mt, false)
 local old_namecall = mt.__namecall
-
 mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method == "Kick" or tostring(method):lower():find("kick") then
+    local m = getnamecallmethod()
+    if m == "Kick" or tostring(m):lower():find("kick") then
         return warn("[AntiSEC] Blocked Kick (__namecall)")
     end
     return old_namecall(self, ...)
 end)
-
--- 🛡️ Hook Kick trực tiếp
 local lp = game:GetService("Players").LocalPlayer
-hookfunction(lp.Kick, function(...) 
-    return warn("[AntiSEC] Blocked Kick (direct)")
-end)
+hookfunction(lp.Kick, function(...) return warn("[AntiSEC] Blocked Kick (direct)") end)
 
--- 🛡️ Hook HttpService
+-- 🛡️ Hook HttpService (cho phép XeroHub load)
 local HttpService = game:GetService("HttpService")
-hookfunction(HttpService.HttpPost, function(...)
-    return warn("[AntiSEC] Blocked HttpPost")
+local raw_HttpGet = hookfunction(HttpService.HttpGet, function(self, url, ...)
+    if url:lower():find("githubusercontent.com/xero2409") then
+        return raw_HttpGet(self, url, ...)
+    end
+    return warn("[AntiSEC] Blocked HttpGet:", url)
 end)
-
-hookfunction(HttpService.HttpPostAsync, function(...)
-    return warn("[AntiSEC] Blocked HttpPostAsync")
-end)
-
-hookfunction(HttpService.HttpGet, function(...)
-    return warn("[AntiSEC] Blocked HttpGet")
-end)
+hookfunction(HttpService.HttpPost, function(...) return warn("[AntiSEC] Blocked HttpPost") end)
+hookfunction(HttpService.HttpPostAsync, function(...) return warn("[AntiSEC] Blocked HttpPostAsync") end)
 
 -- 🛡️ Hook AnalyticsService
 local Analytics = game:GetService("AnalyticsService")
-hookfunction(Analytics.FireEvent, function(...)
-    return warn("[AntiSEC] Blocked Analytics Event")
-end)
+hookfunction(Analytics.FireEvent, function(...) return warn("[AntiSEC] Blocked Analytics Event") end)
 
--- 🛡️ Hook suspicious RemoteEvents & RemoteFunctions
-local suspicious = {"log", "report", "exploit", "cheat", "suspicious", "flag", "data", "sec", "track", "monitor"}
-
-local function is_suspicious(name)
-    name = tostring(name):lower()
-    for _, word in ipairs(suspicious) do
-        if name:find(word) then return true end
-    end
+-- 🛡️ Hook RemoteEvent & Function đáng nghi
+local suspicious = {"log","report","exploit","cheat","suspicious","flag","data","sec","track","monitor"}
+local function is_suspicious(n)
+    n = tostring(n):lower()
+    for _, w in ipairs(suspicious) do if n:find(w) then return true end end
     return false
 end
-
 local old_fire = hookfunction(Instance.new("RemoteEvent").FireServer, function(self, ...)
     if is_suspicious(self.Name) then
-        return warn("[AntiSEC] Blocked suspicious RemoteEvent: " .. self.Name)
+        return warn("[AntiSEC] Blocked RemoteEvent:", self.Name)
     end
     return old_fire(self, ...)
 end)
-
 local old_invoke = hookfunction(Instance.new("RemoteFunction").InvokeServer, function(self, ...)
     if is_suspicious(self.Name) then
-        return warn("[AntiSEC] Blocked suspicious RemoteFunction: " .. self.Name)
+        return warn("[AntiSEC] Blocked RemoteFunction:", self.Name)
     end
     return old_invoke(self, ...)
 end)
 
--- 🛡️ Hook Platform check
+-- 🛡️ Hook Platform / UserSettings
 getgenv().getplatform = function() return "Win32" end
 getgenv().is_studio = function() return false end
-
--- 🛡️ Hook UserSettings leak
 pcall(function()
-    local UserSettings = UserSettings()
-    hookfunction(UserSettings.GetService, function(...) return nil end)
+    local us = UserSettings()
+    hookfunction(us.GetService, function(...) return nil end)
 end)
 
--- 🧠 Giả hành vi người dùng cơ bản
-local function simulate_human()
+-- 🧠 Giả hành vi người dùng
+spawn(function()
     local actions = {
         function()
-            local msg = {"hi", "yo", "hello", "need help", "lol"}
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
-                msg[math.random(1, #msg)], "All"
+                {"hi","yo","hello","need help","lol"}[math.random(1,5)], "All"
             )
         end,
         function()
             local cam = workspace.CurrentCamera
-            cam.CFrame = cam.CFrame * CFrame.Angles(0, math.rad(math.random(-10, 10)), 0)
+            cam.CFrame = cam.CFrame * CFrame.Angles(0, math.rad(math.random(-10,10)), 0)
         end,
         function()
-            local gui = Instance.new("ScreenGui", game:GetService("CoreGui"))
-            local label = Instance.new("TextLabel", gui)
-            label.Text = "Ping: " .. math.random(50, 100)
-            label.Size = UDim2.new(0, 100, 0, 20)
-            label.Position = UDim2.new(0, 10, 0, 10)
-            task.delay(10, function() gui:Destroy() end)
-        end,
+            local gui=Instance.new("ScreenGui",game:GetService("CoreGui"))
+            local lab=Instance.new("TextLabel",gui)
+            lab.Text="Ping: "..math.random(50,100)
+            lab.Size=UDim2.new(0,100,0,20)
+            lab.Position=UDim2.new(0,10,0,10)
+            task.delay(10,function() gui:Destroy() end)
+        end
     }
-
-    while task.wait(math.random(200, 500)) do
+    while task.wait(math.random(200,500)) do
         pcall(function()
-            actions[math.random(1, #actions)]()
+            actions[math.random(1,#actions)]()
         end)
     end
-end
+end)
 
-spawn(simulate_human)
-
-print("[✅ AntiSEC v2025] All protections enabled")
+print("[✅ AntiSEC v2025] Protections enabled")
 -- Max level, godhuman, cdk, sgt
 script_key = "XKH3LMMCTGWJVP54432PZM5HXGYA" -- premium only, u can leave it blank if ur not
 getgenv().Shutdown = false -- Turn on if u are farming bulk accounts

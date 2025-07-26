@@ -5,7 +5,6 @@ _G.Settings = {
         Limit = 800,
         Plant = {
             ["Carrot"] = 50,
-            ["Strawberry"] = 50,
             ["Cauliflower"] = 1,
             ["Watermelon"] = 1,
             ["Rafflesia"] = 1,
@@ -38,8 +37,8 @@ _G.Settings = {
             "Bug Egg",
             "Paradise Egg",
             "Rare Egg",
-            "Rare Summer Egg",
-            "Bee Egg"
+            "Bee Egg",
+            "Primal Egg"
         },
     },
     Webhook = "",
@@ -54,6 +53,10 @@ _G.Settings = {
         },
         Equip = {
             "Chicken", "Rooster"
+        },
+        Lock = {
+            Weight = 10,
+            Enabled = true
         }
     },
     CraftSettings = {
@@ -61,12 +64,21 @@ _G.Settings = {
         Workbench = "Anti Bee Egg",
         SeedEventWorkbench = ""
     },
-    EventShopBuy = {
-        "Summer Seed Pack",
-        "Oasis Egg"
+    ZenEvents = {
+        TakeAllTranquilPlants = true,
+        TradeChi = {
+            Enabled = true,
+            MaxChi =  20
+        }
     },
-    GearStocksBuy = {
-        ""
+    StockBuy = {
+        GearStocksBuy = {""},
+        ZenItems = {""}
+    },
+    SprinklerSettings = {
+        PlaceManage = {
+            ["Basic Sprinkler"] = 1
+        }
     },
     UseSeedPack = true,
     CropSettings = {

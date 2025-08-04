@@ -1,0 +1,43 @@
+script_key="gijxApnnfPULbojMkoZSgIpcYOPSzspo";
+getgenv().Settings = {
+    Rarity = {
+        "Common",
+        "Rare",
+        "Epic",
+        "Legendary",
+        "Mythic",
+        "Brainrot God",
+        "Secret"
+    },
+    WhiteScreen = true,
+    AutoRebirth = true,
+    TPSpeed = 50,
+    AutoLock = true,
+    AutoBuy = true,
+    AutoSell = true,
+    AutoShutdownGameOnHop = true,
+    AutoBuyRebirthRequirements = true,
+    LockPriority = true,
+    CollectInterval = 30,
+    ProtectRarityFromBeingSellAndRebirth = {
+        "Secret"
+    },
+    Webhook = {
+        Enabled = true,
+        WebhookURL = "https://discord.com/api/webhooks/1401052135428329563/RneM6U2ndRy3BrmSGIAn2nKmDWviDVY4kSC-BE3vmp-cc8c1yG_PM-Wd0EN8jqyu6UMD",
+        WebhookSettings = {
+            TrackMode = "Send",
+            Interval = 10,
+        },
+        BuyNotificationSettings = {
+            Enabled = true,
+            URL = "https://discord.com/api/webhooks/1401052135428329563/RneM6U2ndRy3BrmSGIAn2nKmDWviDVY4kSC-BE3vmp-cc8c1yG_PM-Wd0EN8jqyu6UMD",
+            PingEveryone = true,
+            Rarity = {
+                "Secret",
+            },
+        }
+    }
+}
+
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/68831d037e047cd766c39f4497a46932.lua"))()

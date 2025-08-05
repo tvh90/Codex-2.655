@@ -24,10 +24,10 @@ getgenv().Settings = {
     },
     Webhook = {
         Enabled = true,
-        WebhookURL = "https://discord.com/api/webhooks/1401052135428329563/RneM6U2ndRy3BrmSGIAn2nKmDWviDVY4kSC-BE3vmp-cc8c1yG_PM-Wd0EN8jqyu6UMD",
+        WebhookURL = "https://discord.com/api/webhooks/1402032089708101662/4ByjPz1boz3nAR66v1QzHzloamy3bGQyJYJAS2kCsHDZB1Uy__Jy2p54CQicQDgeDJPk",
         WebhookSettings = {
-            TrackMode = "Send",
-            Interval = 10,
+            TrackMode = "Edit",
+            Interval = 600,
         },
         BuyNotificationSettings = {
             Enabled = true,

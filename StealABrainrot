@@ -1,6 +1,6 @@
 script_key="gijxApnnfPULbojMkoZSgIpcYOPSzspo";
 getgenv().Settings = {
-    Rarity = {
+    Rarity = { -- Recommend dont change this for new account
         "Common",
         "Rare",
         "Epic",
@@ -9,16 +9,16 @@ getgenv().Settings = {
         "Brainrot God",
         "Secret"
     },
-    RebirthCap = 4,
+    RebirthCap = 3, -- Disable Auto Rebirth at rebirth 5
     AutoRebirth = true,
     AutoLock = false,
     AutoBuy = true,
     AutoSell = true,
-    ShutdownOnPublicServer = true,
-    AutoShutdownGameOnHop = true,
+    ShutdownOnPublicServer = true, --Auto Shutdown if script execute on public server
+    AutoShutdownGameOnHop = true, -- prevent hop from PS to public 
     AutoBuyRebirthRequirements = true,
     LockPriority = true,
-    CollectInterval = 30,
+    CollectInterval = 30, -- set this to math.huge for no collect
     ProtectRarityFromBeingSellAndRebirth = {
         "Secret"
     },
@@ -31,7 +31,7 @@ getgenv().Settings = {
         },
         BuyNotificationSettings = {
             Enabled = true,
-            URL = "https://discord.com/api/webhooks/1402032089708101662/4ByjPz1boz3nAR66v1QzHzloamy3bGQyJYJAS2kCsHDZB1Uy__Jy2p54CQicQDgeDJPk",
+            URL = "https://discord.com/api/webhooks/1401052135428329563/RneM6U2ndRy3BrmSGIAn2nKmDWviDVY4kSC-BE3vmp-cc8c1yG_PM-Wd0EN8jqyu6UMD",
             PingEveryone = true,
             Rarity = {
                 "Secret",

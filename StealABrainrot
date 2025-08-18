@@ -181,7 +181,7 @@ local function hopFarm()
     end)
 end
 
-script_key = "https://discord.com/api/webhooks/1406707630143049750/XP2JF3fmgo8yYR4QyMdfW7lWCfI-mbDNDW7oSxDDqFP1u7arjkBzydNAjbHsFkzPPdl3"
+script_key = "gijxApnnfPULbojMkoZSgIpcYOPSzspo"
 getgenv().Settings = {
     Rarity = { "Common", "Rare", "Epic", "Legendary", "Mythic", "Brainrot God", "Secret" },
     RebirthCap = 1,

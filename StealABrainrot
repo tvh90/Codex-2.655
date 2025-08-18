@@ -1,3 +1,4 @@
+setfpscap(10)
 --// === Configs base e helpers ===
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")

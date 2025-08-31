@@ -7,15 +7,18 @@ getgenv().Script_Mode = "Kaitun_Script"
 _G.MainSettings = {
     ["EnabledHOP"] = true,
     ['FPSBOOST'] = true,
-    ["FPSLOCKAMOUNT"] = 20,
+    ["FPSLOCKAMOUNT"] = 60,
     ['WhiteScreen'] = true,
     ['CloseUI'] = false,
     ["NotifycationExPRemove"] = true,
     ['AFKCheck'] = 150,
     ["LockFragments"] = 20000,
     ["LockFruitsRaid"] = {
-        [1] = "Dough-Dough",
-        [2] = "Dragon-Dragon",        
+            [1] = "Dough-Dough",
+            [2] = "Kitsune-Kitsune",
+            [3] = "Yeti-Yeti",
+            [4] = "Dragon (East)-Dragon (East)",
+            [5] = "Dragon (West)-Dragon (West)"        
     }
 }
 _G.SharkAnchor_Settings = {
@@ -48,7 +51,7 @@ _G.Races_Settings = {
 }
 _G.Fruits_Settings = {
     ['Main_Fruits'] = {'Dough-Dough'},
-    ['Select_Fruits'] = {"Flame-Flame", "Ice-Ice", "Quake-Quake", "Light-Light", "Dark-Dark", "Spider-Spider", "Rumble-Rumble", "Magma-Magma", "Buddha-Buddha"}
+    ['Select_Fruits'] = {"Dough-Dough"}
 }
 _G.Settings_Melee = {
     ['Superhuman'] = true,
@@ -71,13 +74,13 @@ _G.SwordSettings = {
     ['BuddySword'] = false,
     ['TwinHooks'] = false,
     ['HallowScryte'] = false,
-    ['TrueTripleKatana'] = true,
+    ['TrueTripleKatana'] = false,
     ['CursedDualKatana'] = true
 }
 _G.GunSettings = {
     ['Kabucha'] = false,
     ['SerpentBow'] = false,
-    ['SoulGuitar'] = true
+    ['SoulGuitar'] = false
 }
 _G.FarmMastery_Settings = {
     ['Melee'] = true,
@@ -94,7 +97,7 @@ _G.FarmMastery_Settings = {
 _G.Hop_Settings = {
     ["Find Tushita"] = false
 }
-getgenv().Key = "MARU-CHYN-KRGBY-M1QA-6ZAZ7-5KN6"
+getgenv().Key = "MARU-14TU-4DF0Y-9HSY-LJVXD-CHH4"
 getgenv().id = "1093871052112789586"
 getgenv().Script_Mode = "Kaitun_Script"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()

@@ -7,18 +7,15 @@ getgenv().Script_Mode = "Kaitun_Script"
 _G.MainSettings = {
     ["EnabledHOP"] = true,
     ['FPSBOOST'] = true,
-    ["FPSLOCKAMOUNT"] = 60,
+    ["FPSLOCKAMOUNT"] = 20,
     ['WhiteScreen'] = true,
     ['CloseUI'] = false,
     ["NotifycationExPRemove"] = true,
     ['AFKCheck'] = 150,
     ["LockFragments"] = 20000,
     ["LockFruitsRaid"] = {
-            [1] = "Dough-Dough",
-            [2] = "Kitsune-Kitsune",
-            [3] = "Yeti-Yeti",
-            [4] = "Dragon (East)-Dragon (East)",
-            [5] = "Dragon (West)-Dragon (West)"        
+        [1] = "Dough-Dough",
+        [2] = "Dragon-Dragon",        
     }
 }
 _G.SharkAnchor_Settings = {
@@ -51,7 +48,7 @@ _G.Races_Settings = {
 }
 _G.Fruits_Settings = {
     ['Main_Fruits'] = {'Dough-Dough'},
-    ['Select_Fruits'] = {"Dough-Dough"}
+    ['Select_Fruits'] = {"Flame-Flame", "Ice-Ice", "Quake-Quake", "Light-Light", "Dark-Dark", "Spider-Spider", "Rumble-Rumble", "Magma-Magma", "Buddha-Buddha"}
 }
 _G.Settings_Melee = {
     ['Superhuman'] = true,
@@ -74,13 +71,13 @@ _G.SwordSettings = {
     ['BuddySword'] = false,
     ['TwinHooks'] = false,
     ['HallowScryte'] = false,
-    ['TrueTripleKatana'] = false,
+    ['TrueTripleKatana'] = true,
     ['CursedDualKatana'] = true
 }
 _G.GunSettings = {
     ['Kabucha'] = false,
     ['SerpentBow'] = false,
-    ['SoulGuitar'] = false
+    ['SoulGuitar'] = true
 }
 _G.FarmMastery_Settings = {
     ['Melee'] = true,

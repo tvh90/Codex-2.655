@@ -71,7 +71,7 @@ _G.SwordSettings = {
     ['BuddySword'] = false,
     ['TwinHooks'] = false,
     ['HallowScryte'] = false,
-    ['TrueTripleKatana'] = true,
+    ['TrueTripleKatana'] = false,
     ['CursedDualKatana'] = true
 }
 _G.GunSettings = {

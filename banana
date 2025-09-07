@@ -18,8 +18,8 @@ getgenv().Key = "d70f3af5db00b22eaf8c7977"
         },
         ["White Screen"] = false,
         ["Lock Fps"] = {
-            ["Enabled"] = false,
-            ["FPS"] = 20,
+            ["Enabled"] = true,
+            ["FPS"] = 10,
         },
         ["Get Items"] = {
             ["Saber"] = true,
@@ -28,8 +28,8 @@ getgenv().Key = "d70f3af5db00b22eaf8c7977"
             ["Mirror Fractal"] = true,
             ["Cursed Dual Katana"] = true,
             ["Upgrade Race V2-V3"] = true,
-            ["Auto Pull Lever"] = true,
-            ["Shark Anchor"] = true, --- if have cdk,sg,godhuman
+            ["Auto Pull Lever"] = false,
+            ["Shark Anchor"] = true,
         },
         ["Get Rare Items"] = {
             ["Rengoku"] = false,
@@ -43,13 +43,13 @@ getgenv().Key = "d70f3af5db00b22eaf8c7977"
         },
         ["Auto Chat"] = {
             ["Enabled"] = true,
-            ["Text"] = "Mua a.cc blox fruit v.ip ib epbe : Fumio Youngest.",
+            ["Text"] = "SirMadri - Dominando o mercado.",
         },
-        ["Auto Summon Rip Indra"] = true, --- auto buy haki and craft haki legendary 
-        ["Select Hop"] = { -- 70% will have it
-            ["Hop Server If Have Player Near"] = false, 
+        ["Auto Summon Rip Indra"] = true,
+        ["Select Hop"] = {
+            ["Hop Server If Have Player Near"] = true, 
             ["Hop Find Rip Indra Get Valkyrie Helm or Get Tushita"] = true, 
-            ["Hop Find Dough King Get Mirror Fractal"] = false,
+            ["Hop Find Dough King Get Mirror Fractal"] = true,
             ["Hop Find Raids Castle [CDK]"] = true,
             ["Hop Find Cake Queen [CDK]"] = true,
             ["Hop Find Soul Reaper [CDK]"] = true,
@@ -67,8 +67,8 @@ getgenv().Key = "d70f3af5db00b22eaf8c7977"
             ["Observation"] = true,
         },
         ["Sniper Fruit Shop"] = {
-            ["Enabled"] = false, -- Auto Buy Fruit in Shop Mirage and Normal
-            ["Fruit"] = {""},
+            ["Enabled"] = true,
+            ["Fruit"] = {},
         },
         ["Lock Fruit"] = {},
         ["Webhook"] = {
@@ -77,3 +77,48 @@ getgenv().Key = "d70f3af5db00b22eaf8c7977"
         }
     }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()
+
+-- extras fixes, do not touch (you can verify for yourself)
+
+local remote2 = game:GetService("ReplicatedStorage").Remotes.CommF_
+local remote = game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/Craft")
+local items = {"ToothNecklace", "TerrorJaw", "SharkAnchor"}
+
+remote2:InvokeServer("BuySharkmanKarate", true) -- buy shark anchor
+remote2:InvokeServer("BuySharkmanKarate")
+
+task.spawn(function()
+    while true do
+        local success, err = pcall(function()
+            for _, item in ipairs(items) do
+                remote:InvokeServer("Craft", item, {})
+                task.wait(5)
+            end
+        end)
+        if not success then warn(err) end
+    end
+end)
+
+local errorMSG = { -- rejoin for disconnects
+    "you were kicked", "disconnected", "lost connection", "267", "279",
+}
+task.spawn(function()
+    while task.wait(1) do
+        local promptGui = game.CoreGui:FindFirstChild("RobloxPromptGui")
+        if promptGui then
+            for _, v in ipairs(promptGui:GetDescendants()) do
+                if v:IsA("TextLabel") and v.Text and v.Text ~= "" then
+                    local txt = string.lower(v.Text)
+                    for _, msg in ipairs(errorMSG) do
+                        if string.find(txt, msg, 1, true) then
+                            local success, err = pcall(function()
+                                game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+                            end)
+                            return
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)

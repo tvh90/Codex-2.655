@@ -102,10 +102,10 @@ getgenv().Configs = {
         ["Hop Find Darkbeard"] = true, -- For skull guitar
         ["Hop Find Soul Reaper"] = true, -- For CDK
         ["Hop Find Mirage"] = true, -- For pull lever
-        ["Find Fruit"] = true, -- Will find 1m+ fruit to unlock swan door to access third sea
+        ["Find Fruit"] = false, -- Will find 1m+ fruit to unlock swan door to access third sea
     },
     ["Farm Mastery"] = {
-        ["Enable"] = true,
+        ["Enable"] = false,
         ["Farm Mastery Weapons"] = {"Sword", "Gun", "Blox Fruit"}, -- Blox Fruit, Gun (left -> right: High -> Low Priority)
         ["Swords To Farm"] = {"Cursed Dual Katana"},
         ["Guns To Farm"] = {"Skull Guitar"},
@@ -122,11 +122,11 @@ getgenv().Configs = {
     },
     ["Auto Spawn rip_indra"] = true,
     ["Auto Spawn Dough King"] = false,
-    ["Auto Pull Lever"] = true,
-    ["Auto Collect Berry"] = true,
-    ["Auto Evo Race"] = true,
+    ["Auto Pull Lever"] = false,
+    ["Auto Collect Berry"] = false,
+    ["Auto Evo Race"] = false,
     ["Awaken Fruit"] = true,
-    ["Rainbow Haki"] = true,
+    ["Rainbow Haki"] = false,
     ["Hop Player Near"] = true,
     ["Skull Guitar"] = true,
     ["Cursed Dual Katana"] = true,
@@ -134,7 +134,7 @@ getgenv().Configs = {
     ["Eat Fruit"] = "Magma Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
     ["Snipe Fruit"] = "Dough Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
     ["Lock Fragment"] = 30000,
-    ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
+    ["Buy Stuffs"] = false -- buso, geppo, soru, ken haki, ...
 }
 repeat random_delay(1, 2) pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
 -- ✅ AntiSEC Full Protection cho Delta Executor + LDPlayer 9

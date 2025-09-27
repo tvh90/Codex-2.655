@@ -40,17 +40,17 @@ getgenv().Configs = {
     ["Auto Spawn rip_indra"] = true,
     ["Auto Spawn Dough King"] = true,
     ["Auto Pull Lever"] = false,
-    ["Auto Collect Berry"] = false,
-    ["Auto Evo Race"] = false,
-    ["Awaken Fruit"] = false,
-    ["Rainbow Haki"] = false,
-    ["Hop Player Near"] = false,
+    ["Auto Collect Berry"] = true,
+    ["Auto Evo Race"] = true,
+    ["Awaken Fruit"] = true,
+    ["Rainbow Haki"] = true,
+    ["Hop Player Near"] = true,
     ["Skull Guitar"] = true,
     ["Cursed Dual Katana"] = true,
     ["Switch Melee"] = true,
     ["Eat Fruit"] = "Magma Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
     ["Snipe Fruit"] = "Dough Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
     ["Lock Fragment"] = 30000,
-    ["Buy Stuffs"] = false -- buso, geppo, soru, ken haki, ...
+    ["Buy Stuffs"] = true -- buso, geppo, soru, ken haki, ...
 }
 repeat task.wait() pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute

@@ -19,13 +19,13 @@ _G.MainSettings = {
     }
 }
 _G.SharkAnchor_Settings = {
-    ["Enabled_Farm"] = false,
+    ["Enabled_Farm"] = true,
     ['FarmAfterMoney'] = 2500000
 }
 _G.Quests_Settings = {        
     ['Rainbow_Haki'] = true,
     ["MusketeerHat"] = true,
-    ["PullLever"] = true,
+    ["PullLever"] = false,
     ['DoughQuests_Mirror'] = {
         ['Enabled'] = true,
         ['UseFruits'] = true

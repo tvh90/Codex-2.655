@@ -1,0 +1,23 @@
+getgenv().Script_Mode = "Kaitun_Script"
+_G.OneClickSettings = {
+    ["LockFruits"] = {
+        "Dough-Dough",
+        "Dragon-Dragon",
+        "Yeti-Yeti"
+    },
+    ["MainFruits"] = {
+        "Dough-Dough"
+    },
+    ["RegularFruits"] = {
+        "Flame-Flame",
+        "Magmag-Magma",
+        "Dark-Dark",
+        "Light-Light"
+    },
+    ["FragmentsCap"] = 10000,
+    ["Farm Shark Anchor"] = true
+}
+getgenv().Key = "MARU-HUUD-DZCJS-VUQ4-Z92TK-N1A4"
+getgenv().id = "1093871052112789586"
+getgenv().Script_Mode = "Kaitun_Script"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()

@@ -1,6 +1,11 @@
-if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
-getgenv().Script_Mode = "Kaitun_Script"
-getgenv().Key = "MARU-MSMC-7N6UY-D6FR-5OGRR-TFLO"
-getgenv().id = "1093871052112789586"
-getgenv().Script_Mode = "Kaitun_Script"
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
+VPS_NAME = "775"
+DOMAIN   = "serverhop.estevao1098.com"
+KEY      = "JBbj396z2XDTGn1c0Pipomr8hVR4teCK"
+
+repeat
+    pcall(function()
+        loadstring(game:HttpGet("https://autojoin.estevao1098.com/script/serverhop.lua?key=" .. KEY))()
+    end)
+
+    task.wait(10)
+until getgenv().isLoaded == true

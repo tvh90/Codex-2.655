@@ -1,198 +1,79 @@
--- ✅ Spoof HWID & Executor
-getfenv().gethwid = function()
-    return "LD-HWID-" .. tostring(math.random(10000000, 99999999))
-end
-getfenv().DeviceID = "LD-DEVICE-" .. tostring(math.random(1000000, 9999999))
-getfenv().identifyexecutor = function()
-    return "Delta_" .. tostring(math.random(10000, 99999))
-end
-
--- Anti SEC Protection
-local mt = getrawmetatable(game)
-setreadonly(mt, false)
-local old = mt.__namecall
-
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method == "Kick" or tostring(method):lower():find("kick") then
-        return warn("[SEC] Kick blocked")
-    end
-    return old(self, ...)
-end)
-
-hookfunction(game.HttpService.HttpPost, function(...) 
-    return warn("[SEC] Blocked HttpPost")
-end)
-
--- Random delay handler
-function random_delay(min, max)
-    return task.wait(math.random(min*100, max*100)/100)
-end
--- 🧠 PHẦN 2: GIẢ HÀNH VI NGƯỜI DÙNG
-local actions = {
-    function()
-        local msg = {"hi", "anyone?", "pls help", "yo", "nice", "need quest"}
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
-            msg[math.random(1,#msg)], "All"
-        )
-    end,
-    function()
-        wait(math.random(2, 5))
-    end,
-    function()
-        local cam = workspace.CurrentCamera
-        cam.CFrame = cam.CFrame * CFrame.Angles(0, math.rad(math.random(-15, 15)), 0)
-    end,
-    function()
-        local fakeGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
-        local label = Instance.new("TextLabel", fakeGui)
-        label.Text = "Ping: "..math.random(40, 90)
-        label.Size = UDim2.new(0, 100, 0, 20)
-        label.Position = UDim2.new(0, 10, 0, 10)
-        task.delay(10, function() fakeGui:Destroy() end)
-    end,
-    function()
-        local hum = lp.Character and lp.Character:FindFirstChild("Humanoid") or nil
-        if hum then
-            hum:MoveTo(lp.Character.HumanoidRootPart.Position + Vector3.new(math.random(-10,10), 0, math.random(-10,10)))
-        end
-    end,
-}
-
-spawn(function()
-    while true do
-        wait(math.random(300, 600))
-        pcall(function()
-            local act = actions[math.random(1, #actions)]
-            act()
-        end)
-    end
-end)
-
-spawn(function()
-    while wait(math.random(600, 900)) do
-        local players = game:GetService("Players"):GetPlayers()
-        if #players > 1 then
-            local target = players[math.random(2, #players)]
-            pcall(function()
-                lp:RequestFriendship(target)
-                warn("[Fake] Sent friend request to:", target.Name)
-            end)
-        end
-    end
-end)
--- Max level, godhuman, cdk, sgt
-script_key = "SOE3HMUGXW7OVJNQ43EPZM5HXGYA" -- premium only, u can leave it blank if ur not
-getgenv().Shutdown = false -- Turn on if u are farming bulk accounts
-getgenv().Configs = {
-    ["Team"] = "Marines",
-    ["FPS Boost"] = {
-        ["Enable"] = true,
-        ["FPS Cap"] = 20,
-    },
-    ["Farm Boss Drops"] = {
-        ["Enable"] = false,
-        ["When x2 Exp Expired"] = false
-    },
-    ["Hop"] = { -- premium only
-        ["Enable"] = true,
-        ["Hop Find Tushita"] = true,
-        ["Hop Find Valkyrie Helm"] = true,
-        ["Hop Find Mirror Fractal"] = true,
-        ["Hop Find Darkbeard"] = true, -- For skull guitar
-        ["Hop Find Soul Reaper"] = true, -- For CDK
-        ["Hop Find Mirage"] = true, -- For pull lever
-        ["Find Fruit"] = false, -- Will find 1m+ fruit to unlock swan door to access third sea
-    },
-    ["Farm Mastery"] = {
-        ["Enable"] = false,
-        ["Farm Mastery Weapons"] = {"Sword", "Gun", "Blox Fruit"}, -- Blox Fruit, Gun (left -> right: High -> Low Priority)
-        ["Swords To Farm"] = {"Cursed Dual Katana"},
-        ["Guns To Farm"] = {"Skull Guitar"},
-        ["Mastery Health (%)"] = 40 -- For Blox Fruit, Gun
-    },
-    ["Farm Config"] = {
-        ["First Farm At Sky"] = true,
-        ["Farm Bone Get x2 Exp"] = true
-    },
-    ["Trackstat"] = {
-        ["Enable"] = false,
-        ["Key"] = "", -- Get from xerohub.click
-        ["Device"] = "test" -- u can put any name here
-    },
-    ["Auto Spawn rip_indra"] = true,
-    ["Auto Spawn Dough King"] = false,
-    ["Auto Pull Lever"] = false,
-    ["Auto Collect Berry"] = false,
-    ["Auto Evo Race"] = false,
-    ["Awaken Fruit"] = true,
-    ["Rainbow Haki"] = false,
-    ["Hop Player Near"] = true,
-    ["Skull Guitar"] = true,
-    ["Cursed Dual Katana"] = true,
-    ["Switch Melee"] = true,
-    ["Eat Fruit"] = "Magma Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
-    ["Snipe Fruit"] = "Dough Fruit", -- leave blank for none, put the fruit name like this example: Smoke Fruit, T-Rex Fruit, ...
-    ["Lock Fragment"] = 30000,
-    ["Buy Stuffs"] = false -- buso, geppo, soru, ken haki, ...
-}
-repeat random_delay(1, 2) pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/kaitun.lua"))() end) until getgenv().Check_Execute
--- ✅ AntiSEC Full Protection cho Delta Executor + LDPlayer 9
-
--- 🛡️ Hook __namecall để chặn Kick qua Remote
-local mt = getrawmetatable(game)
-setreadonly(mt, false)
-local old = mt.__namecall
-
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method == "Kick" or tostring(method):lower():find("kick") then
-        return warn("[SEC] Blocked __namecall Kick")
-    end
-    return old(self, ...)
-end)
-
--- 🛡️ Hook Kick trực tiếp (bypass __namecall)
-local lp = game:GetService("Players").LocalPlayer
-hookfunction(lp.Kick, function(...)
-    return warn("[SEC] Blocked direct Kick")
-end)
-
--- 🛡️ Hook các HTTP nguy hiểm
-hookfunction(game.HttpService.HttpPost, function(...) 
-    return warn("[SEC] Blocked HttpPost")
-end)
-
-hookfunction(game.HttpService.HttpPostAsync, function(...) 
-    return warn("[SEC] Blocked HttpPostAsync")
-end)
-
-hookfunction(game.HttpService.HttpGet, function(...) 
-    return warn("[SEC] Blocked HttpGet")
-end)
-
--- 🛡️ Hook RemoteEvent, RemoteFunction độc hại
-local bad_keywords = {"log", "report", "exploit", "cheat", "suspicious", "flag", "data"}
-
-local function is_suspicious(name)
-    name = tostring(name):lower()
-    for _, kw in ipairs(bad_keywords) do
-        if name:find(kw) then return true end
-    end
-    return false
-end
-
-local old_fire = hookfunction(Instance.new("RemoteEvent").FireServer, function(self, ...)
-    if is_suspicious(self.Name) then
-        return warn("[SEC] Blocked RemoteEvent:", self.Name)
-    end
-    return old_fire(self, ...)
-end)
-
-local old_invoke = hookfunction(Instance.new("RemoteFunction").InvokeServer, function(self, ...)
-    if is_suspicious(self.Name) then
-        return warn("[SEC] Blocked RemoteFunction:", self.Name)
-    end
-    return old_invoke(self, ...)
-end)
--- ✅ Đã bật full bảo vệ AntiSEC (LDPlayer 9 + Delta)
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+getgenv().Key = "31d4bebb966b95e8bd94d7a6"
+    getgenv().SettingFarm ={
+        ["Hide UI"] = false,
+        ["Reset Teleport"] = {
+            ["Enabled"] = false,
+            ["Delay Reset"] = 3,
+            ["Item Dont Reset"] = {
+                ["Fruit"] = {
+                    ["Enabled"] = true,
+                    ["All Fruit"] = true, 
+                    ["Select Fruit"] = {
+                        ["Enabled"] = false,
+                        ["Fruit"] = {},
+                    },
+                },
+            },
+        },
+        ["White Screen"] = false,
+        ["Lock Fps"] = {
+            ["Enabled"] = false,
+            ["FPS"] = 20,
+        },
+        ["Get Items"] = {
+            ["Saber"] = true,
+            ["Godhuman"] =  true,
+            ["Skull Guitar"] = true,
+            ["Mirror Fractal"] = true,
+            ["Cursed Dual Katana"] = true,
+            ["Upgrade Race V2-V3"] = true,
+            ["Auto Pull Lever"] = false,
+            ["Shark Anchor"] = true, --- if have cdk,sg,godhuman
+        },
+        ["Get Rare Items"] = {
+            ["Rengoku"] = false,
+            ["Dragon Trident"] = false, 
+            ["Pole (1st Form)"] = false,
+            ["Gravity Blade"]  = false,
+        },
+        ["Farm Fragments"] = {
+            ["Enabled"]  = true,
+            ["Fragment"] = 20000,
+        },
+        ["Auto Chat"] = {
+            ["Enabled"] = false,
+            ["Text"] = "",
+        },
+        ["Auto Summon Rip Indra"] = true, --- auto buy haki and craft haki legendary 
+        ["Select Hop"] = { -- 70% will have it
+            ["Hop Server If Have Player Near"] = false, 
+            ["Hop Find Rip Indra Get Valkyrie Helm or Get Tushita"] = true, 
+            ["Hop Find Dough King Get Mirror Fractal"] = true,
+            ["Hop Find Raids Castle [CDK]"] = true,
+            ["Hop Find Cake Queen [CDK]"] = true,
+            ["Hop Find Soul Reaper [CDK]"] = true,
+            ["Hop Find Darkbeard [SG]"] = true,
+            ["Hop Find Mirage [ Pull Lever ]"] = false,
+        },
+        ["Farm Mastery"] = {
+            ["Melee"] = false,
+            ["Sword"] = false,
+        },
+        ["Buy Haki"] = {
+            ["Enhancement"] = false,
+            ["Skyjump"] = true,
+            ["Flash Step"] = true,
+            ["Observation"] = true,
+        },
+        ["Sniper Fruit Shop"] = {
+            ["Enabled"] = true, -- Auto Buy Fruit in Shop Mirage and Normal
+            ["Fruit"] = {"Leopard-Leopard","Kitsune-Kitsune","Dragon-Dragon","Yeti-Yeti","Dough-Dough","Gas-Gas"},
+        },
+        ["Lock Fruit"] = {"Leopard-Leopard","Kitsune-Kitsune","Dragon-Dragon","Yeti-Yeti","Dough-Dough","Gas-Gas"},
+        ["Webhook"] = {
+            ["Enabled"] = false,
+            ["WebhookUrl"] = "",
+        }
+    }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()

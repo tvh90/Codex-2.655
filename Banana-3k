@@ -18,8 +18,8 @@ getgenv().Key = "31d4bebb966b95e8bd94d7a6"
         },
         ["White Screen"] = false,
         ["Lock Fps"] = {
-            ["Enabled"] = false,
-            ["FPS"] = 20,
+            ["Enabled"] = true,
+            ["FPS"] = 12,
         },
         ["Get Items"] = {
             ["Saber"] = true,
@@ -28,7 +28,7 @@ getgenv().Key = "31d4bebb966b95e8bd94d7a6"
             ["Mirror Fractal"] = true,
             ["Cursed Dual Katana"] = true,
             ["Upgrade Race V2-V3"] = true,
-            ["Auto Pull Lever"] = false,
+            ["Auto Pull Lever"] = true,
             ["Shark Anchor"] = true, --- if have cdk,sg,godhuman
         },
         ["Get Rare Items"] = {
@@ -38,8 +38,8 @@ getgenv().Key = "31d4bebb966b95e8bd94d7a6"
             ["Gravity Blade"]  = false,
         },
         ["Farm Fragments"] = {
-            ["Enabled"]  = true,
-            ["Fragment"] = 20000,
+            ["Enabled"]  = false,
+            ["Fragment"] = 50000,
         },
         ["Auto Chat"] = {
             ["Enabled"] = false,
@@ -49,7 +49,7 @@ getgenv().Key = "31d4bebb966b95e8bd94d7a6"
         ["Select Hop"] = { -- 70% will have it
             ["Hop Server If Have Player Near"] = false, 
             ["Hop Find Rip Indra Get Valkyrie Helm or Get Tushita"] = true, 
-            ["Hop Find Dough King Get Mirror Fractal"] = true,
+            ["Hop Find Dough King Get Mirror Fractal"] = false,
             ["Hop Find Raids Castle [CDK]"] = true,
             ["Hop Find Cake Queen [CDK]"] = true,
             ["Hop Find Soul Reaper [CDK]"] = true,
@@ -68,9 +68,9 @@ getgenv().Key = "31d4bebb966b95e8bd94d7a6"
         },
         ["Sniper Fruit Shop"] = {
             ["Enabled"] = true, -- Auto Buy Fruit in Shop Mirage and Normal
-            ["Fruit"] = {"Leopard-Leopard","Kitsune-Kitsune","Dragon-Dragon","Yeti-Yeti","Dough-Dough","Gas-Gas"},
+            ["Fruit"] = {"Dough-Dough"},
         },
-        ["Lock Fruit"] = {"Leopard-Leopard","Kitsune-Kitsune","Dragon-Dragon","Yeti-Yeti","Dough-Dough","Gas-Gas"},
+        ["Lock Fruit"] = {"Dough-Dough"},
         ["Webhook"] = {
             ["Enabled"] = false,
             ["WebhookUrl"] = "",

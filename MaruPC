@@ -1,0 +1,23 @@
+getgenv().Script_Mode = "Kaitun_Script"
+_G.OneClickSettings = {
+    ["MainIsFarmLevel"] = true,
+    ["LockFruits"] = {
+        "Dough-Dough",
+        "Dragon-Dragon",
+        "Yeti-Yeti"
+    },
+    ["MainFruits"] = {
+        "Dough-Dough"
+    },
+    ["RegularFruits"] = {
+        "Dough-Dough"
+    },
+    ["FragmentsCap"] = 50000,
+    ["Upgrade Race"] = true,
+    ["Pull Lever"] = false,
+    ["Farm Shark Anchor"] = true,
+    ["Cursed Dual Katana"] = true
+}
+(getgenv()).key = "MARUJBCCDM58VPDYOXZHGQ8NFH";
+(getgenv()).id = "1093871052112789586";
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruComkak/main/PCBit.lua"))()

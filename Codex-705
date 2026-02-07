@@ -1,4 +1,3 @@
-setfpscap(15)
 getgenv().Script_Mode = "Kaitun_Script"
 _G.OneClickSettings = {
     ["MainIsFarmLevel"] = true,

@@ -1,24 +1,80 @@
-getgenv().Script_Mode = "Kaitun_Script"
-_G.OneClickSettings = {
-    ["MainIsFarmLevel"] = true,
-    ["LockFruits"] = {
-        "Dough-Dough",
-        "Dragon-Dragon",
-        "Yeti-Yeti"
-    },
-    ["MainFruits"] = {
-        "Dough-Dough"
-    },
-    ["RegularFruits"] = {
-        "Dough-Dough"
-    },
-    ["FragmentsCap"] = 50000,
-    ["Upgrade Race"] = true,
-    ["Pull Lever"] = false,
-    ["Farm Shark Anchor"] = true,
-    ["Cursed Dual Katana"] = true
-}
-getgenv().Key = "MARU-14TU-4DF0Y-9HSY-LJVXD-CHH4"
-getgenv().id = "1093871052112789586"
-getgenv().Script_Mode = "Kaitun_Script"
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()
+setfpscap(12)
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+getgenv().Key = "31d4bebb966b95e8bd94d7a6"
+    getgenv().SettingFarm ={
+        ["Hide UI"] = false,
+        ["Reset Teleport"] = {
+            ["Enabled"] = false,
+            ["Delay Reset"] = 3,
+            ["Item Dont Reset"] = {
+                ["Fruit"] = {
+                    ["Enabled"] = true,
+                    ["All Fruit"] = true, 
+                    ["Select Fruit"] = {
+                        ["Enabled"] = false,
+                        ["Fruit"] = {},
+                    },
+                },
+            },
+        },
+        ["White Screen"] = false,
+        ["Lock Fps"] = {
+            ["Enabled"] = true,
+            ["FPS"] = 12,
+        },
+        ["Get Items"] = {
+            ["Saber"] = true,
+            ["Godhuman"] =  true,
+            ["Skull Guitar"] = true,
+            ["Mirror Fractal"] = true,
+            ["Cursed Dual Katana"] = true,
+            ["Upgrade Race V2-V3"] = true,
+            ["Auto Pull Lever"] = true,
+            ["Shark Anchor"] = true, --- if have cdk,sg,godhuman
+        },
+        ["Get Rare Items"] = {
+            ["Rengoku"] = false,
+            ["Dragon Trident"] = false, 
+            ["Pole (1st Form)"] = false,
+            ["Gravity Blade"]  = false,
+        },
+        ["Farm Fragments"] = {
+            ["Enabled"]  = false,
+            ["Fragment"] = 50000,
+        },
+        ["Auto Chat"] = {
+            ["Enabled"] = false,
+            ["Text"] = "",
+        },
+        ["Auto Summon Rip Indra"] = true, --- auto buy haki and craft haki legendary 
+        ["Select Hop"] = { -- 70% will have it
+            ["Hop Server If Have Player Near"] = false, 
+            ["Hop Find Rip Indra Get Valkyrie Helm or Get Tushita"] = true, 
+            ["Hop Find Dough King Get Mirror Fractal"] = false,
+            ["Hop Find Raids Castle [CDK]"] = true,
+            ["Hop Find Cake Queen [CDK]"] = true,
+            ["Hop Find Soul Reaper [CDK]"] = true,
+            ["Hop Find Darkbeard [SG]"] = true,
+            ["Hop Find Mirage [ Pull Lever ]"] = false,
+        },
+        ["Farm Mastery"] = {
+            ["Melee"] = false,
+            ["Sword"] = false,
+        },
+        ["Buy Haki"] = {
+            ["Enhancement"] = false,
+            ["Skyjump"] = true,
+            ["Flash Step"] = true,
+            ["Observation"] = true,
+        },
+        ["Sniper Fruit Shop"] = {
+            ["Enabled"] = true, -- Auto Buy Fruit in Shop Mirage and Normal
+            ["Fruit"] = {"Dough-Dough"},
+        },
+        ["Lock Fruit"] = {"Dough-Dough"},
+        ["Webhook"] = {
+            ["Enabled"] = false,
+            ["WebhookUrl"] = "",
+        }
+    }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()

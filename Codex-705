@@ -1,30 +1,32 @@
-task.spawn(function()
-    repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer
-
-    getgenv().use_banana = false
-    getgenv().setup_started = true
-
-    pcall(function() setfpscap(15) end)
-
-    getgenv().NAH = {
-        DeleteMap = true,
-        BlackScreen = false,
-        LockFragment = 50000,
-        AwakenFruit = false,
-        UpRace = true,
-        LockFps = true,
-        FPSCAP = 15,
-        FarmItems = { Pole = false, Saber = false, GetMirrorFactorWhenHaveCup = true },
-        TableFruit = {
-            ListFruit = {
-                "Kitsune-Kitsune","Control-Control","Dragon-Dragon","Yeti-Yeti", "Dough-Dough",
-                "Gas-Gas","T-Rex-T-Rex","Tiger-Tiger", "Mammoth-Mammoth", "Spirit-Spirit",
-                "Venom-Venom", "Gravity-Gravity", "Portal-Portal", "Buddha-Buddha"
-            },
-            SnipeFruit = true,
-            EatFruit = false
-        },
-    }
-
-    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/4365e6ab3c80828a24ba946f4d8ff946.lua"))()
-end)
+getgenv().Script_Mode = "Kaitun_Script"
+_G.OneClickSettings = {
+    ["MainIsFarmLevel"] = true,
+    ["LockFruits"] = {
+        "Dough-Dough",
+        "Dragon-Dragon",
+        "Yeti-Yeti"
+    },
+    ["MainFruits"] = {
+        "Dough-Dough",
+        "Pain-Pain",
+        "T-Rex-T-Rex",
+        "Shadow-Shadow",
+        "Tiger-Tiger",
+        "Kitsune-Kitsune"
+    },
+    ["RegularFruits"] = {
+        "Flame-Flame",
+        "Magmag-Magma",
+        "Dark-Dark",
+        "Light-Light"
+    },
+    ["FragmentsCap"] = 50000,
+    ["Upgrade Race"] = true,
+    ["Pull Lever"] = true,
+    ["Farm Shark Anchor"] = true,
+    ["Cursed Dual Katana"] = true
+}
+getgenv().Key = "MARU-HUUD-DZCJS-VUQ4-Z92TK-N1A4"
+getgenv().id = "1093871052112789586"
+getgenv().Script_Mode = "Kaitun_Script"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruBitkub/main/Mobile.lua"))()

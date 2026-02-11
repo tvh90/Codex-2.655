@@ -1,80 +1,30 @@
-setfpscap(12)
-repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-getgenv().Key = "31d4bebb966b95e8bd94d7a6"
-    getgenv().SettingFarm ={
-        ["Hide UI"] = false,
-        ["Reset Teleport"] = {
-            ["Enabled"] = false,
-            ["Delay Reset"] = 3,
-            ["Item Dont Reset"] = {
-                ["Fruit"] = {
-                    ["Enabled"] = true,
-                    ["All Fruit"] = true, 
-                    ["Select Fruit"] = {
-                        ["Enabled"] = false,
-                        ["Fruit"] = {},
-                    },
-                },
+task.spawn(function()
+    repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer
+
+    getgenv().use_banana = false
+    getgenv().setup_started = true
+
+    pcall(function() setfpscap(15) end)
+
+    getgenv().NAH = {
+        DeleteMap = true,
+        BlackScreen = false,
+        LockFragment = 50000,
+        AwakenFruit = false,
+        UpRace = true,
+        LockFps = true,
+        FPSCAP = 15,
+        FarmItems = { Pole = false, Saber = false, GetMirrorFactorWhenHaveCup = true },
+        TableFruit = {
+            ListFruit = {
+                "Kitsune-Kitsune","Control-Control","Dragon-Dragon","Yeti-Yeti", "Dough-Dough",
+                "Gas-Gas","T-Rex-T-Rex","Tiger-Tiger", "Mammoth-Mammoth", "Spirit-Spirit",
+                "Venom-Venom", "Gravity-Gravity", "Portal-Portal", "Buddha-Buddha"
             },
+            SnipeFruit = true,
+            EatFruit = false
         },
-        ["White Screen"] = false,
-        ["Lock Fps"] = {
-            ["Enabled"] = true,
-            ["FPS"] = 12,
-        },
-        ["Get Items"] = {
-            ["Saber"] = true,
-            ["Godhuman"] =  true,
-            ["Skull Guitar"] = true,
-            ["Mirror Fractal"] = true,
-            ["Cursed Dual Katana"] = true,
-            ["Upgrade Race V2-V3"] = true,
-            ["Auto Pull Lever"] = true,
-            ["Shark Anchor"] = true, --- if have cdk,sg,godhuman
-        },
-        ["Get Rare Items"] = {
-            ["Rengoku"] = false,
-            ["Dragon Trident"] = false, 
-            ["Pole (1st Form)"] = false,
-            ["Gravity Blade"]  = false,
-        },
-        ["Farm Fragments"] = {
-            ["Enabled"]  = false,
-            ["Fragment"] = 50000,
-        },
-        ["Auto Chat"] = {
-            ["Enabled"] = false,
-            ["Text"] = "",
-        },
-        ["Auto Summon Rip Indra"] = true, --- auto buy haki and craft haki legendary 
-        ["Select Hop"] = { -- 70% will have it
-            ["Hop Server If Have Player Near"] = false, 
-            ["Hop Find Rip Indra Get Valkyrie Helm or Get Tushita"] = true, 
-            ["Hop Find Dough King Get Mirror Fractal"] = false,
-            ["Hop Find Raids Castle [CDK]"] = true,
-            ["Hop Find Cake Queen [CDK]"] = true,
-            ["Hop Find Soul Reaper [CDK]"] = true,
-            ["Hop Find Darkbeard [SG]"] = true,
-            ["Hop Find Mirage [ Pull Lever ]"] = false,
-        },
-        ["Farm Mastery"] = {
-            ["Melee"] = false,
-            ["Sword"] = false,
-        },
-        ["Buy Haki"] = {
-            ["Enhancement"] = false,
-            ["Skyjump"] = true,
-            ["Flash Step"] = true,
-            ["Observation"] = true,
-        },
-        ["Sniper Fruit Shop"] = {
-            ["Enabled"] = true, -- Auto Buy Fruit in Shop Mirage and Normal
-            ["Fruit"] = {"Dough-Dough"},
-        },
-        ["Lock Fruit"] = {"Dough-Dough"},
-        ["Webhook"] = {
-            ["Enabled"] = false,
-            ["WebhookUrl"] = "",
-        }
     }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-kaitunBF.lua"))()
+
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/4365e6ab3c80828a24ba946f4d8ff946.lua"))()
+end)
